@@ -1,0 +1,15 @@
+.flex{
+    display:flex;
+}
+.column{
+    flex-direction: column;
+}
+.space-around{
+    justify-content: space-around
+}
+.space-between{
+    justify-content: space-between
+}
+.red{
+    background:red
+}
