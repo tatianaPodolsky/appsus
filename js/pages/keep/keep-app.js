@@ -1,7 +1,7 @@
-import keepContainer from '../cmps/keep-container-cmp.js';
-import keepSearch from '../cmps/keep-search-cmp.js';
-import keepNewNote from '/keep/keep-new-note.js';
-import keepService from './services/'
+import keepContainer from '../../cmps/keep/keep-container-cmp.js'
+import keepSearch from '../../cmps/keep/keep-search-cmp.js';
+import keepNewNote from '../../pages/keep/keep-new-note.js'
+import keepService from '../../services/keep-service.js'
 
 export default {
     template : `
@@ -21,7 +21,7 @@ export default {
         keepSearch,
         keepContainer,
         keepNewNote,
-        keepNoteDetails
+        // keepNoteDetails
     },
     created() {
         keepService.query()
