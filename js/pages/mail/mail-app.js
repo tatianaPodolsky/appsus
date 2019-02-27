@@ -4,16 +4,22 @@ export default {
     template:`
     <section>
      <h1>Mail App</h1>
-     <mail-list></mail-list>
+     <mail-list :mails="mails"></mail-list>
     </section>
     `,
+    data(){
+        return{
+            mails:[]
+
+        }
+    },
     components:{
         mailList,
         
     },
     created(){
       mailService.getMails().then((res)=>{
-          console.log(res)
+        this.mails = res
       })
     }
 }
