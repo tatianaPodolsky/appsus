@@ -1,5 +1,5 @@
 
-import notePreview from '../keep-note-preview-cmp';
+import notePreview from '../keep-note-preview-cmp.js';
 
 export default {
     props: ['data'],
