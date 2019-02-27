@@ -1,5 +1,5 @@
-import mailApp from './pages/home.js'
-import keepApp from './pages/home.js'
+import mailApp from './pages/mail/mail-app.js'
+import keepApp from './pages/keep/keep-app.js'
 
 const routes = [
     { path: '/mail-app', component: mailApp },
