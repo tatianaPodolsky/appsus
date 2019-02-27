@@ -3,7 +3,8 @@ export default{
     template:`
     <section>
         <h1>Email list</h1>
-        <mail-preview :mails="mails"></mail-preview>
+        <mail-preview v-for="mail in mails" :key="mail.id" 
+        :mail="mail"></mail-preview>
         <
     </section>
     

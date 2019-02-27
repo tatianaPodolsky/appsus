@@ -1,3 +1,25 @@
+.mail-app a{
+    font-size:13px;
+}
 .mail-preview div{
     align-items: center;
+}
+.read{
+    font-weight:bold;;
+    ;
+}
+.unread-msg-count{
+    background:red;
+    color:White;
+    padding:0.3em .6em;
+    border-radius: 50%;
+    position: absolute;
+    top:0;
+}
+.unread-msg-container{
+    border:1px solid;
+    width:20%;
+    font-size:1.2em;
+    position: relative;
+    padding:1em;
 }

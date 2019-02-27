@@ -7,6 +7,10 @@ var date = Date.now()
 var gMails = [
     {id:utilService.makeId(),name:'Danny',subject:'Cats',body:'lorem ipsum',time:date,isRead:false},
     {id:utilService.makeId(),name:'Tai',subject:'Dogs',body:'lorem ipsum',time:date,isRead:false},
+    {id:utilService.makeId(),name:'Tai',subject:'Dogs',body:'lorem ipsum',time:date,isRead:false},
+    {id:utilService.makeId(),name:'Tai',subject:'Dogs',body:'lorem ipsum',time:date,isRead:false},
+    {id:utilService.makeId(),name:'Tai',subject:'Dogs',body:'lorem ipsum',time:date,isRead:false},
+    {id:utilService.makeId(),name:'Tai',subject:'Dogs',body:'lorem ipsum',time:date,isRead:false},
     {id:utilService.makeId(),name:'Mor',subject:'Bird',body:'lorem ipsum',time:date,isRead:false}
 ];
 
