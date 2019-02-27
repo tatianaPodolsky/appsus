@@ -1,7 +1,7 @@
 import keepContainer from '../cmps/keep-container-cmp.js';
 import keepSearch from '../cmps/keep-search-cmp.js';
 import keepNewNote from '/keep/keep-new-note.js';
-
+import keepService from './services/'
 
 export default {
     template : `
@@ -14,7 +14,7 @@ export default {
     `,
     data() {
         return {
-
+            notes: null,
         }
     },
     components: {
@@ -24,6 +24,7 @@ export default {
         keepNoteDetails
     },
     created() {
-        
+        keepService.query()
+            .then(notes =>this.notes = notes);
     }    
 }

@@ -2,7 +2,7 @@
 import notePreview from './keep-note-preview-cmp.js';
 
 export default {
-    props: [],
+    props: ['notes'],
     template: `
         <section class="keep-container" >
             <h1>Your notes</h1>
@@ -12,27 +12,17 @@ export default {
                     <router-link
                     :to="'/note/' + note.id" 
                     >
-                        <book-preview  
-                            :book="note"  >
-                        </book-preview>
+                        <note-preview  
+                            :note="note"  >
+                        </note-preview>
                     </router-link>
-                    <!-- <button @click="emitDeleted(book.id)">x</button> -->
                 </li>
             </ul>
         </section>
     `,
         data() {
             return {
-    
             }
-        },
-        methods: {
-    
-        },
-        computed: {
-        },
-        created() {
-    
         },
         components: {
             notePreview,

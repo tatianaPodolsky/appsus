@@ -1,4 +1,9 @@
+import storageService from '../services/storage-service.js';
+import utilService from '../services/util-service.js';
+
+
 export default {
+    query,
 
 }
 
@@ -9,7 +14,9 @@ var gNotes = [
         style: {
             bColor: 'pink',
         },
-        pinned: false
+        pinned: false,
+        id: utilService.makeId(),
+        date: new Date()
     },
     {
         type: 'img',
@@ -17,7 +24,9 @@ var gNotes = [
         style: {
             bColor: 'blue',
         },
-        pinned: false
+        pinned: false,
+        id: utilService.makeId(),
+        date: new Date()
     },
     {
         type: 'todo',
@@ -25,11 +34,15 @@ var gNotes = [
         style: {
             bColor: 'green',
         },
-        pinned: false
+        pinned: false,
+        id: utilService.makeId(),
+        date: new Date()
     }
 ];
 
-function getNotes() {
-    if ()
+function query() {
+    if (storageService.load('notes')) gNotes = storageService.load('notes');
+    return Promise.resolve(gNotes);
 }
+
 
