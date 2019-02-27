@@ -1,3 +1,7 @@
+import keepList from '../cmps/keep-list-cmp.js';
+import keepSearch from '../cmps/keep-search-cmp.js';
+import keepNewNote from '/keep/keep-new-note.js';
+
 
 export default {
     template : `
@@ -5,16 +9,11 @@ export default {
             <h1>Miss keep</h1>            
             <keep-search></keep-search>  
             <keep-new-note></keep-new-note>  
-            <keep-note-details></keep-note-details>  
             <keep-list></keep-list>
         </section> 
     `,
     data() {
         return {
-            cars: [],
-            filterBy: {
-                vendor : ''
-            }
         }
     },
     components: {
