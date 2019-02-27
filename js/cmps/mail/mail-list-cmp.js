@@ -4,11 +4,12 @@ export default{
     <section>
         <h1>Email list</h1>
         <mail-preview :mails="mails"></mail-preview>
+        <
     </section>
     
     `,
     props:['mails'],
     components:{
-        mailPreview
+        mailPreview,
     }
 }
