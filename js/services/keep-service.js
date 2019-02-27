@@ -9,30 +9,30 @@ export default {
 
 var gNotes = [
     {
-        type: 'text',
+        type: 'textNote',
         content: 'My wish list: peace and love',
         style: {
-            bColor: 'pink',
+            bColor: 'lightcyan',
         },
         pinned: false,
         id: utilService.makeId(),
         date: new Date()
     },
     {
-        type: 'img',
-        content: '../img/demo-keep.png',
+        type: 'imgNote',
+        content: './img/demo-keep.png',
         style: {
-            bColor: 'blue',
+            bColor: 'lightpink',
         },
         pinned: false,
         id: utilService.makeId(),
         date: new Date()
     },
     {
-        type: 'todo',
+        type: 'todoNote',
         content: [{txt: 'To do this', done: false}, {txt: 'To do that as well', done: true}],
         style: {
-            bColor: 'green',
+            bColor: 'lightgreen',
         },
         pinned: false,
         id: utilService.makeId(),

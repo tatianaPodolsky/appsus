@@ -1,14 +1,17 @@
 
 import notePreview from './keep-note-preview-cmp.js';
+import keepApp from '../../pages/keep/keep-app.js';
 
 export default {
     props: ['notes'],
     template: `
         <section class="keep-container" >
-            <h1>Your notes</h1>
-            <ul>
-                <li :key="note.id" 
-                    v-for="note in notes">
+            <ul class="flex">
+                <li 
+                    :style="{backgroundColor: note.style.bColor}"
+                    :key="note.id" 
+                    v-for="note in notes"
+                    class="note-preview flex">
                     <router-link
                     :to="'/note/' + note.id" 
                     >

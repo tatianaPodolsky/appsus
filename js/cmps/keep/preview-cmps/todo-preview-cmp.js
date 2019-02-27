@@ -4,15 +4,24 @@ import notePreview from '../keep-note-preview-cmp.js';
 export default {
     props: ['data'],
     template: `
-        <div class="todo-note-prev">
-            <ul>
-                <li v-for: :key="currCar.id" 
-                    v-for="(currCar, idx) in cars"></li>
-            </ul>
+        <div class="todo-preview">
+            <li v-for="(todo, idx) in todos" :key="idx" :class="{done: todo.done}">
+                <p>{{todo.txt}}</p>
+            </li>
+            <p><i class="fas fa-list-ul"></i></p>
         </div>
     `,
-    data: {
-        todos: data.content,
+    data() {
+        return {
+            todos: this.data.content,
+        }
+    },
+    methods: {
 
-    }
+    },
+    computed: {
+    },
+    created() {
+        // this.todos = data.content;
+    },
 }

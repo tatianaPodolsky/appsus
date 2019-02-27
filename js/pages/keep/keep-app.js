@@ -7,9 +7,9 @@ export default {
     template : `
         <section class="keep-app">
             <h1>Miss keep</h1>            
-            <keep-search></keep-search>  
+            <keep-search :notes="notes"></keep-search>  
             <keep-new-note></keep-new-note>  
-            <keep-container></keep-container>
+            <keep-container :notes="notes"></keep-container>
         </section> 
     `,
     data() {

@@ -1,10 +1,19 @@
-// import notePreview from '../keep-note-preview-cmp.js';
+import notePreview from '../keep-note-preview-cmp.js';
 
 export default {
     props: ['data'],
     template: `
-        <div class="img-note-prev">
-            <img src="data.content">
+        <div class="img-preview">
+            <img :src="url">
+            <p><i class="fas fa-image"></i></p>
         </div>
-    `
+    `,
+    methods: {
+
+    },
+    computed: {
+        url() {
+            return this.data.content;
+        }
+    }
 }
