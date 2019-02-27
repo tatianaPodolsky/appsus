@@ -10,7 +10,7 @@ export default {
 var gNotes = [
     {
         type: 'text',
-        cotent: 'My wish list: peace and love',
+        content: 'My wish list: peace and love',
         style: {
             bColor: 'pink',
         },
@@ -42,6 +42,7 @@ var gNotes = [
 
 function query() {
     if (storageService.load('notes')) gNotes = storageService.load('notes');
+    else storageService.store('notes', gNotes)
     return Promise.resolve(gNotes);
 }
 
