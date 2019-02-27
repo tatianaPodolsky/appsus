@@ -1,5 +1,5 @@
 import mailList from '../../cmps/mail/mail-list-cmp.js'
-
+import mailService from '../../services/mail-service.js'
 export default {
     template:`
     <section>
@@ -8,6 +8,12 @@ export default {
     </section>
     `,
     components:{
-        mailList
+        mailList,
+        
+    },
+    created(){
+      mailService.getMails().then((res)=>{
+          console.log(res)
+      })
     }
 }
