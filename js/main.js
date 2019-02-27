@@ -1,16 +1,14 @@
-import myRoutes from './routes.js';
-const myRouter = new VueRouter({routes: myRoutes})
+import myRoutes from './routes.js'
+const myRouter = new VueRouter({ routes: myRoutes })
 
-import {eventBus} from './event-bus.js';
+import { eventBus } from './event-bus.js'
 
-window.vueApp = new Vue({
+window.vueApp = ({
     el: '#app',
     router: myRouter,
     components: {
         mailApp,
         keepApp,
         navBar
-    },
-    data: {
     }
 })
