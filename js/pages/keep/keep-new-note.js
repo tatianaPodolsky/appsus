@@ -8,11 +8,13 @@ export default {
     template: `
     <section class="keep-new-note">
         <!-- <label for="note">New note</label> -->
+        <keep-alive>
             <component
                 :is="cmp.type" 
                 :data="cmp.data"
                 @saveNewNote="saveNewNoteToDB">
             </component>
+        </keep-alive>
         <button @click="setType(1)" :class="{activeBtn: active.text}"><i class="fas fa-font"></i></button>
         <button @click="setType(2)" :class="{activeBtn: active.img}"><i class="fas fa-image"></i></button>
         <button @click="setType(3)" :class="{activeBtn: active.todo}"><i class="fas fa-list-ul"></i></button>

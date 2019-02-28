@@ -13,9 +13,8 @@ export default {
                     :key="note.id" 
                     v-for="note in notes"
                     class="note-preview flex">
-                    <router-link :to="'/note/' + note.id">
-                        <note-preview @deleteNote="removeNote" :note="note"></note-preview>
-                    </router-link>
+                    <note-preview @updateNote="updateNote" @deleteNote="removeNote" :note="note">
+                    </note-preview>
                 </li>
             </ul>
         </section>
@@ -26,8 +25,12 @@ export default {
         }
     },
     methods: {
-        removeNote(note) {
-            keepService.removeNote(note);
+        removeNote(noteToRemove) {
+            keepService.removeNote(noteToRemove);
+            this.$emit('updateNotes');
+        },
+        updateNote(noteToUpdate) {
+            keepService.updateNote(noteToUpdate);
             this.$emit('updateNotes');
         }
     },

@@ -45,6 +45,7 @@
     background-color: aliceblue;
     border: 1px solid lightgrey;
     min-height: 70vh;
+    flex-wrap: wrap;
 
 }
 .keep-container ul>*  {
@@ -61,6 +62,7 @@
     text-decoration: none;
     list-style: none;
     padding: 10px;
+    min-width: 110px;
 }
 .keep-container a {
     text-decoration: none;

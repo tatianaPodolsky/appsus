@@ -8,6 +8,7 @@ export default {
     template: `
     <div>
         <component
+            @updateNote="updateNote"
             :is="cmp.type" 
             :data="cmp.data">
         </component>
@@ -18,7 +19,7 @@ export default {
                 <i class="fas fa-palette"></i>
                 <i class="fas fa-edit"></i>
                 <i class="fas fa-copy"></i>
-                <i class="fas fa-trash" @click.stop.prevent="deleteNote"></i>
+                <i class="fas fa-trash" @click.stop.self="deleteNote"></i>
             </div>
         </div>
     </div>
@@ -32,6 +33,10 @@ export default {
     methods: {
         deleteNote() {
             this.$emit('deleteNote', this.note)
+        },
+        updateNote() {
+            console.log('updatedNote at notePreview before emit to container', this.note);
+            this.$emit('updateNote', this.note)
         }
     },
     computed: {

@@ -15,8 +15,8 @@ export default {
     methods: {
         saveNewNote() {
             if(this.addedNote)
-            this.$emit('saveNewNote', this.addedNote)
-            this.addedNote = '';
+            this.$emit('saveNewNote', this.addedNote).
+            then(() => this.addedNote.content = '')
         }
     },
 }
