@@ -2,8 +2,8 @@ import { eventBus } from '../../event-bus.js'
 
 export default {
   template: `
-    <section class="mail-navbar flex">
-    <router-link to="/mail-app/mail-list" exact>
+    <section class="mail-navbar flex column">
+    <router-link to="/mail-app/inbox">
        <div class="unread-msg-container">
            <span>inbox</span>
           <span v-if="unreadCount" class="unread-msg-count" >{{unreadCount}}</span> 
@@ -28,6 +28,5 @@ export default {
       this.unreadCount = unreadMails.length
     }))
   }
-
 
 }

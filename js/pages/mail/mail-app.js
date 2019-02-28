@@ -1,37 +1,35 @@
 import mailList from '../../cmps/mail/mail-list-cmp.js'
 import mailNavbar from '../../cmps/mail/mail-navbar.js'
 import mailService from '../../services/mail-service.js'
-import {eventBus} from '../../event-bus.js'
-import storageService from '../../services/storage-service.js';
+import { eventBus } from '../../event-bus.js'
+import storageService from '../../services/storage-service.js'
 export default {
-    template:`
+  template: `
     <section class="mail-app">
         <h1>Mail App</h1>
-  
-     <mail-navbar :mails="mails"></mail-navbar>
-     <router-view :mails="mails"></router-view>
+        <div class="flex">
+          <mail-navbar :mails="mails"></mail-navbar>
+          <router-view :mails="mails"></router-view>
+        </div>
     </section>
     `,
-    data(){
-        return{
-            mails:[]
+  data() {
+    return {
+      mails: []
 
-        }
-    },
-    components:{
-        mailList,
-        mailNavbar,
-        
-    },
-    created(){
-      mailService.getMails().then((res)=>{
-        this.mails = res
-        console.log(this.mails)
-      })
-       eventBus.$on('mailUpdate',((data)=>{
-        storageService.store('mails',this.mails)
-        console.log('data',data)
-       }))
-    
     }
+  },
+  components: {
+    mailList,
+  mailNavbar},
+  created() {
+    mailService.getMails().then((res) => {
+      this.mails = res
+      console.log(this.mails)
+    })
+    eventBus.$on('mailUpdate', ((data) => {
+      storageService.store('mails', this.mails)
+      console.log('data', data)
+    }))
+  }
 }
