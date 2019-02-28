@@ -7,7 +7,6 @@ export default {
     addNote,
     removeNote,
     updateNote
-
 }
 
 var gNotes = [
@@ -17,7 +16,7 @@ var gNotes = [
         style: {
             bColor: 'lightcyan',
         },
-        pinned: false,
+        pinned: true,
         id: utilService.makeId(),
         date: new Date()
     },

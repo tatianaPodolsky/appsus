@@ -4,8 +4,8 @@ export default {
     props: ['notes'],
     template : `
     <section class="keep-search">
-        <input v-model="inputSearch">
-        <button><i class="fas fa-search"></i></button>
+        <input v-model="inputSearch" placeholder="Search notes" @keyup="setFilter">
+        <button @click="setFilter"><i class="fas fa-search"></i></button>
     </section>
     `,
     data() {
@@ -14,6 +14,8 @@ export default {
         }
     },
     methods: {
-
+        setFilter() {
+            this.$emit('filterBy', this.inputSearch)
+        }
     }
 }

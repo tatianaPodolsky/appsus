@@ -15,7 +15,7 @@ export default {
         <div class="preview-icons-panel flex">
             <i :class="symbType"></i>
             <div class="edit-panel">
-                <i class="fas fa-thumbtack"></i>
+                <i class="fas fa-thumbtack" :style="[note.pinned ? {color:'black'} : {color:''}]"></i>
                 <i class="fas fa-palette"></i>
                 <i class="fas fa-edit"></i>
                 <i class="fas fa-copy"></i>
@@ -28,6 +28,9 @@ export default {
         return {
             cmp: { type: null, data: null },
             symbType: null,
+            // styleObj: {
+            //     color: 'black',
+            // }
         }
     },
     methods: {
