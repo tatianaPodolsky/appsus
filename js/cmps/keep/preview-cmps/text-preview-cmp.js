@@ -5,7 +5,7 @@ export default {
     template: `
         <div class="text-preview">
             <p>{{data.content}}</p>
-            <p><i class="fas fa-font"></i></p>
+            <!-- <p><i class="fas fa-font"></i></p> -->
         </div>
     `
 }

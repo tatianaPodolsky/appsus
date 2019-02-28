@@ -5,7 +5,7 @@ export default {
     template: `
         <div class="img-preview">
             <img :src="url">
-            <p><i class="fas fa-image"></i></p>
+            <!-- <i class="fas fa-image"></i> -->
         </div>
     `,
     methods: {

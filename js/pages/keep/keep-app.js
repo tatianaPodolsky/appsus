@@ -9,12 +9,18 @@ export default {
             <h1>Miss keep</h1>            
             <keep-search :notes="notes"></keep-search>  
             <keep-new-note></keep-new-note>  
-            <keep-container :notes="notes"></keep-container>
+            <keep-container @updateNotes="reCreate":notes="notes"></keep-container>
         </section> 
     `,
     data() {
         return {
             notes: null,
+        }
+    },
+    methods: {
+        reCreate() {
+            keepService.query()
+            .then(notes =>this.notes = notes);
         }
     },
     components: {

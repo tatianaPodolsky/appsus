@@ -8,7 +8,7 @@ export default {
             <li v-for="(todo, idx) in todos" :key="idx" :class="{done: todo.done}">
                 <p>{{todo.txt}}</p>
             </li>
-            <p><i class="fas fa-list-ul"></i></p>
+            <!-- <p><i class="fas fa-list-ul"></i></p> -->
         </div>
     `,
     data() {

@@ -91,4 +91,10 @@
 .todo-preview li.done {
     text-decoration: line-through;
 }
-
+.preview-icons-panel {
+    justify-content: space-between
+}
+.activeBtn i {
+    color: black;
+    font-size: 1em;
+}

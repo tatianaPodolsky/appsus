@@ -5,6 +5,7 @@ import utilService from '../services/util-service.js';
 export default {
     query,
     addNote,
+    removeNote
 
 }
 
@@ -51,6 +52,13 @@ function addNote(type, content) {
     gNotes.push(newNote);
     storageService.store('notes', gNotes);
     // console.log(gNotes);
+}
+
+function removeNote(noteToRemove) {
+    var noteIdx = gNotes.findIndex(note => note.id === noteToRemove.id)
+    gNotes.splice(noteIdx, 1);
+    storageService.store('notes', gNotes);
+    return Promise.resolve();
 }
 function _createNote(type, content) {
     var formattedContent;

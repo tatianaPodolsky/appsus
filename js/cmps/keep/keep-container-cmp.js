@@ -1,6 +1,7 @@
 
 import notePreview from './keep-note-preview-cmp.js';
 import keepApp from '../../pages/keep/keep-app.js';
+import keepService from '../../services/keep-service.js'
 
 export default {
     props: ['notes'],
@@ -13,21 +14,27 @@ export default {
                     v-for="note in notes"
                     class="note-preview flex">
                     <router-link :to="'/note/' + note.id">
-                        <note-preview :note="note"></note-preview>
+                        <note-preview @deleteNote="removeNote" :note="note"></note-preview>
                     </router-link>
-                    <div class="edit-preview-panel">
-                        <i class="fas fa-thumbtack"></i>
-                        <i class="fas fa-palette"></i>
-                        <i class="fas fa-edit"></i>
-                        <i class="fas fa-copy"></i>
-                    </div>
                 </li>
             </ul>
         </section>
     `,
     data() {
         return {
+            symbType: null,
         }
+    },
+    methods: {
+        removeNote(note) {
+            keepService.removeNote(note);
+            this.$emit('updateNotes');
+        }
+    },
+    computed: {
+
+    },
+    created() {
     },
     components: {
         notePreview,
