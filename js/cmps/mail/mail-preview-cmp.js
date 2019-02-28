@@ -1,9 +1,8 @@
 import {eventBus} from '../../event-bus.js'
 export default{
     template:`
-    <section  :class="{read:mail.isRead}" class="mail-preview" flex space-around>
-            <input v-model="mail.isRead" @change="checked(mail)"  type="checkbox">
-            <p>From: {{mail.name}} </p>
+    <section  :class="{read:mail.isRead}" @click="checked(mail)" class="mail-preview" flex space-around>
+            <p>From: {{mail.from}} </p>
             <p>Subject: {{mail.subject}}</p>
             <p>content: {{mail.body}}</p>
             <p>{{mail.time}}</p>
@@ -23,8 +22,8 @@ export default{
     props:['mail'],
     methods:{
         checked(mail){
+            mail.isRead = true
             eventBus.$emit('mailRead',mail)
-            eventBus.$emit('mailUpdate',mail)
         },
         
         
