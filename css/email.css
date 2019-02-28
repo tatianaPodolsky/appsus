@@ -4,9 +4,13 @@
 .mail-preview div{
     align-items: center;
 }
-.read{
-    font-weight:bold;;
-    ;
+.mail-preview p{
+    font-weight:bold
+
+}
+.mail-preview.read p{
+    font-weight:400;
+    
 }
 .unread-msg-count{
     background:red;

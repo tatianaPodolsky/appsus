@@ -3,11 +3,10 @@ import {eventBus} from '../../event-bus.js'
 export default{
     template:`
     <section>
-    <router-link to="/mail-app/" exact>
+    <router-link to="/mail-app/mail-list" exact>
        <div class="unread-msg-container">
            <span>inbox</span>
           <span v-if="unreadCount" class="unread-msg-count" >{{unreadCount}}</span> 
-
        </div> 
     </router-link> 
         <router-link to="/mail-app/read">read emails</router-link>
@@ -21,8 +20,11 @@ export default{
     },
  
     created(){
-        eventBus.$on('mailRead',((data)=>{
-         this.unreadCount += !data.isRead ?  1: -1
+        eventBus.$on('mailRead',(()=>{
+           var unreadMails =  this.mails.filter(mail =>{
+                return !mail.isRead
+            })
+            this.unreadCount= unreadMails.length 
         }))
     }
 

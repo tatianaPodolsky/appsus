@@ -24,9 +24,10 @@ export default{
     methods:{
         checked(mail){
             eventBus.$emit('mailRead',mail)
+            eventBus.$emit('mailUpdate',mail)
         },
-      
-     
+        
+        
     },
     created(){
             eventBus.$emit("mailRead",this.mail)

@@ -3,29 +3,36 @@ import mailDetails from './mail-details-cmp.js'
 
 export default{
     template:`
-    <section>
-        <h1>Email list</h1>
-        <mail-preview @click="selectMail(mail)" v-for="mail in mails" :key="mail.id" 
-        :mail="mail"></mail-preview>
-        <mail-details v-if="selectedMail"></mail-details>
-        
+
+        <section class="mail-list">
+            <h1>Email list</h1>
+                <router-link v-for="mail in mails" :key="mail.id" :to="mail.id">
+                <mail-preview  @click.native.stop="selectMail(mail)" 
+                :mail="mail">
+            </mail-preview>
     </section>
+</router-link>
     
     `,
     props:['mails'],
     components:{
         mailPreview,
+        mailDetails,
     },
     data(){
         return{
-            selectedMail:null
+            selectedMail:null,
         }
     },
     methods:{
         selectMail(mail){
             this.selectedMail = mail
-            console.log(selectedMail)
-        }
+            console.log(this.selectedMail)
+        },
+    
+    },
+    created(){
+            console.log(this.mails)
     }
     
 }
