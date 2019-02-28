@@ -1,4 +1,5 @@
 import mailService from '../../services/mail-service.js'
+import utilService from '../../services/util-service.js'
 import storageService from '../../services/storage-service.js'
 export default {
   template: `
@@ -22,21 +23,24 @@ export default {
     `,
   data() {
     return {
-      newMail: { 
+      newMail: {
+        id: utilService.makeId(),
         from: '',
-        to: '',
+        // tos: '',
         subject: '',
         body: '',
-           }
+        isRead: false,
+        time: Date.now()
+      },
+      sent: false
     }
-   
   },
-  methods:{
-      sendMail(){
-        mailService.addMail(this.newMail)
-        console.log(mailService.gMails)
-   
-
-      }
+  methods: {
+    sendMail() {
+      mailService.addMail(this.newMail)
+      setTimeout(() => {
+        window.location.href = 'http://127.0.0.1:5500/#/mail-app/inbox'
+      }, 2500)
+    }
   }
 }

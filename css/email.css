@@ -12,19 +12,38 @@
     font-weight:400;
     
 }
+.unread-msg-container{
+    position: relative;
+}
 .unread-msg-count{
     background:red;
     color:White;
-    padding:0.3em .6em;
+    /* padding:0.1em .3em; */
     border-radius: 50%;
     position: absolute;
     top:0;
 }
 
 .mail-navbar a{
-    border:1px solid;
-    width:20%;
+    /* border:1px solid; */
+    /* width:20%; */
     font-size:1.2em;
+    /* position: relatsive; */
+    /* padding:1em; */
+}
+.single-mail{
+    border:1px solid;
     position: relative;
-    padding:1em;
+}
+.single-mail .delete-btn{
+    background:none;
+    border:none;
+    position: absolute;
+    top:0;
+    right:0
+ 
+}
+.single-mail .delete-btn:hover{
+    opacity:0.5;
+    transition:all 1s;
 }
