@@ -10,6 +10,7 @@ export default {
                 :is="cmp.type" 
                 :data="cmp.data">
             </component>
+            
 
     `,
     data() {

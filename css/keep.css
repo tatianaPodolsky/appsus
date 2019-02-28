@@ -5,9 +5,34 @@
 }
 .keep-container{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     width: 80%;
-    
+}
+.keep-search {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    height: 2em;
+}
+.keep-search input {
+    width: 100%;
+}
+.keep-new-note {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    height: 2em;
+}
+.keep-new-note form {
+    display: flex;
+    width: 90%;
+}
+.keep-new-note form input {
+    width: 100%;
+}
+.keep-new-note .btn-save-note {
+    display: none
 }
 .keep-container h1 {
     text-align: center;
@@ -51,6 +76,10 @@
 .fas {
     color: grey;
     margin-top: 30px;
+}
+.keep-new-note .fas,
+.keep-search .fas {
+    margin-top: 0;
 }
 .text-preview,
 .img-preview,

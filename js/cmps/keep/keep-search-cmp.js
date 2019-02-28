@@ -4,9 +4,16 @@ export default {
     props: ['notes'],
     template : `
     <section class="keep-search">
-        Search 
-        <input>
+        <input v-model="inputSearch">
+        <button><i class="fas fa-search"></i></button>
     </section>
-    `
+    `,
+    data() {
+        return {
+            inputSearch: '',
+        }
+    },
+    methods: {
 
+    }
 }
