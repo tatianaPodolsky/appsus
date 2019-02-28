@@ -4,9 +4,9 @@ import mailList from './cmps/mail/mail-list-cmp.js'
 import mailDetails from './cmps/mail/mail-details-cmp.js'
 
 const routes = [
-    { path: 'mail-app/mail/oRZNTN', component: mailDetails },
     { path: '/mail-app', component: mailApp, children:[
-        {path:'/mail-list',props:true,component:mailList},
+        {path:'mail-list',component:mailList},
+        { path: ':id', component: mailDetails },
     ] },
     { path: '/keep-app', component: keepApp },
 ]

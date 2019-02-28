@@ -8,8 +8,7 @@ export default {
     <section class="mail-app">
      <h1>Mail App</h1>
      <mail-navbar :mails="mails"></mail-navbar>
-     <!-- <mail-list :mails="mails"></mail-list> -->
-     <router-view></router-view>
+     <router-view :mails="mails" :mail="mail"></router-view>
 
     </section>
     `,

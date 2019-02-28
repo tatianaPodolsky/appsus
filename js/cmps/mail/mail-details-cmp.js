@@ -1,7 +1,7 @@
 export default{
     template:`
     <section>
-        <h1>{{mail}}</h1>
+        <h1>xxxxxxx</h1>
 
     </section>
     

@@ -6,12 +6,12 @@ export default{
 
         <section class="mail-list">
             <h1>Email list</h1>
-                <router-link v-for="mail in mails" :key="mail.id" :to="mail.id">
-                <mail-preview  @click.native.stop="selectMail(mail)" 
+         <router-link v-for="mail in mails" :key="mail.id" :to="mail.id">
+            <mail-preview  @click.native.stop="selectMail(mail)" 
                 :mail="mail">
             </mail-preview>
+        </router-link>
     </section>
-</router-link>
     
     `,
     props:['mails'],
