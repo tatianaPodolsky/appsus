@@ -1,9 +1,10 @@
 export default{
     template:`
     <section>
-        <h1>Email Desc</h1>
+        <h1>xxxxxxx</h1>
 
     </section>
     
-    `
+    `,
+    props:["mail"]
 }

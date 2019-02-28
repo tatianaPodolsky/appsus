@@ -1,10 +1,12 @@
 import mailApp from './pages/mail/mail-app.js'
 import keepApp from './pages/keep/keep-app.js'
-import inbox from './cmps/mail/inbox-cmp.js'
+import mailList from './cmps/mail/mail-list-cmp.js'
+import mailDetails from './cmps/mail/mail-details-cmp.js'
 
 const routes = [
-    { path: '/mail-app', component: mailApp,children:[
-        {path:'/inbox',component:inbox}
+    { path: '/mail-app', component: mailApp, children:[
+        {path:'mail-list',component:mailList},
+        { path: ':id', component: mailDetails },
     ] },
     { path: '/keep-app', component: keepApp },
 ]
