@@ -6,10 +6,10 @@ import storageService from '../../services/storage-service.js';
 export default {
     template:`
     <section class="mail-app">
-     <h1>Mail App</h1>
+        <h1>Mail App</h1>
+  
      <mail-navbar :mails="mails"></mail-navbar>
-     <router-view :mails="mails" :mail="mail"></router-view>
-
+     <router-view :mails="mails"></router-view>
     </section>
     `,
     data(){
@@ -27,7 +27,6 @@ export default {
       mailService.getMails().then((res)=>{
         this.mails = res
         console.log(this.mails)
-        this.$route.params.mails = this.mails
       })
        eventBus.$on('mailUpdate',((data)=>{
         storageService.store('mails',this.mails)
