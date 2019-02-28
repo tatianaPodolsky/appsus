@@ -26,13 +26,18 @@
 }
 .keep-new-note form {
     display: flex;
-    width: 90%;
+    width: 100%;
 }
 .keep-new-note form input {
     width: 100%;
 }
 .keep-new-note .btn-save-note {
     display: none
+}
+@media (max-width: 700px) {
+    .keep-new-note .btn-save-note {
+        display: flex
+    }
 }
 .keep-container h1 {
     text-align: center;
@@ -97,6 +102,10 @@
     justify-content: space-between
 }
 .activeBtn i {
+    color: black;
+    font-size: 1em;
+}
+.pinned i {
     color: black;
     font-size: 1em;
 }
