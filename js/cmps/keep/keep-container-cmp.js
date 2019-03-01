@@ -26,8 +26,9 @@ export default {
         }
     },
     methods: {
-        copyNote(noteToCopy){
-            eventBus.$emit('copyNote', noteToCopy)
+        copyNote(noteToCopy) {
+            keepService.copyNote(noteToCopy);
+            this.$emit('updateNotes');
         },
         removeNote(noteToRemove) {
             keepService.removeNote(noteToRemove);

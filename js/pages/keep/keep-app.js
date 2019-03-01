@@ -21,16 +21,25 @@ export default {
     methods: {
         reCreate() {
             keepService.query()
-            .then(notes =>this.notes = notes);
+            .then(notes =>this.notes = notes)
+            .then(()=> this.notes = this.notesToShow())
         },
         filterNotes(filterBy) {
+            this.filterBy = filterBy;
             if (!filterBy) this.reCreate();
             let searchStr = filterBy.toLowerCase();
             this.notes = this.notes.filter(note => {
-                if (note.type === 'imgNote') return ('image').includes(searchStr) && !note.isPinned;
+                if (note.type === 'imgNote') return ('image').includes(searchStr) || note.content.toLowerCase().includes(searchStr)
                 else if (note.type === 'todoNote') {
-                   return (note.content.find(todo => todo.txt.toLowerCase().includes('searchStr')) &&!note.isPinned)
-                } else return note.content.toLowerCase().includes(searchStr) && !note.isPinned})
+                   return (note.content.find(todo => todo.txt.toLowerCase().includes('searchStr')))
+                } else return note.content.toLowerCase().includes(searchStr)});
+            this.filterBy ='';
+        },
+        notesToShow() {
+            return this.notes.sort(function(a, b) {
+                return b.pinned - a.pinned 
+                ||a.date - b.date
+              })
         }
     },
     computed: {
@@ -43,7 +52,8 @@ export default {
     },
     created() {
         keepService.query()
-            .then(notes =>this.notes = notes);
+            .then(notes =>this.notes = notes)
+            .then(()=> this.notes = this.notesToShow())
     }    
 }
 

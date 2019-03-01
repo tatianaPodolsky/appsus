@@ -59,14 +59,8 @@ export default {
         saveNewNoteToDB(addedNote) {
             keepService.addNote(addedNote.type, addedNote.content);
         },
-        copyNote(noteToCopy) {
-            keepService.copyNote(noteToCopy);
-        }
     },
     created() {
-        eventBus.$on('copyNote', (noteToCopy) => {
-            this.copyNote(noteToCopy)
-        })
         this.cmp.type = this.selectedCmp;
     },
     components: {
