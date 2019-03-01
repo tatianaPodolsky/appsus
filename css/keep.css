@@ -105,7 +105,7 @@
     color: black;
     font-size: 1em;
 }
-.pinned i {
-    color: black;
-    font-size: 1em;
+.edit-panel {
+    cursor: pointer;
 }
+
