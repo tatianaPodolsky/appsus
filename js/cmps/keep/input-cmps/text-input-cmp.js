@@ -3,7 +3,7 @@
 export default {
     template: 
     `<form @submit="saveNewNote">
-        <input name="note" v-model="addedNote.content" @keyup.enter="saveNewNote" placeholder="What is in your mind?"></textarea>
+        <input v-model="addedNote.content" @keyup.enter="saveNewNote" placeholder="What is in your mind?"></textarea>
         <button type="submit" class="btn-save-note" :disabled="!addedNote.content" value="save">Save</button>
     </form>`,
     data() {
@@ -16,9 +16,10 @@ export default {
     },
     methods: {
         saveNewNote() {
-            if(this.addedNote)
+            if(this.addedNote.content){
             this.$emit('saveNewNote', this.addedNote)
-            this.addedNote = '';
-        }
-    },
+            }
+            this.addedNote.content = '';
+        },
+    }
 }

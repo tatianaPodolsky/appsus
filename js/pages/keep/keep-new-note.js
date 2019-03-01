@@ -8,7 +8,6 @@ export default {
     props: ['notes'],
     template: `
     <section class="keep-new-note">
-        <!-- <label for="note">New note</label> -->
         <keep-alive>
             <component
                 :is="cmp.type" 

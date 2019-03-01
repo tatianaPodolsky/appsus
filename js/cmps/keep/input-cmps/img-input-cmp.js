@@ -14,9 +14,10 @@ export default {
     },
     methods: {
         saveNewNote() {
-            if(this.addedNote)
+            if(this.addedNote.content){
             this.$emit('saveNewNote', this.addedNote)
-            this.addedNote = '';
-        }
+            }
+            this.addedNote.content = '';
+        },
     },
 }
