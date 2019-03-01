@@ -6,7 +6,8 @@ export default {
     query,
     addNote,
     removeNote,
-    updateNote
+    updateNote,
+    copyNote
 }
 
 var gNotes = [
@@ -51,9 +52,19 @@ function addNote(type, content) {
     var newNote = _createNote(type, content);
     gNotes.push(newNote);
     storageService.store('notes', gNotes);
-    // console.log(gNotes);
 }
-
+function copyNote(noteToCopy) {
+    console.log('noteToCopy', noteToCopy);
+    var coppiedNote = {
+        type: noteToCopy.type, 
+        content: noteToCopy.content, 
+        style: noteToCopy.style, 
+        pinned: noteToCopy.pinned, 
+        id: utilService.makeId(), 
+        date: new Date()};
+    gNotes.push(coppiedNote);
+    storageService.store('notes', gNotes);
+}
 function removeNote(noteToRemove) {
     var noteIdx = gNotes.findIndex(note => note.id === noteToRemove.id)
     gNotes.splice(noteIdx, 1);

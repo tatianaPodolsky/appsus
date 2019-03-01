@@ -3,6 +3,7 @@ import keepService from '../../services/keep-service.js'
 import imgInput from '../../cmps/keep/input-cmps/img-input-cmp.js'
 import textInput from '../../cmps/keep/input-cmps/text-input-cmp.js'
 import todoInput from '../../cmps/keep/input-cmps/todo-input-cmp.js'
+import { eventBus } from '../../event-bus.js';
 export default {
     props: ['notes'],
     template: `
@@ -57,13 +58,16 @@ export default {
         },
         saveNewNoteToDB(addedNote) {
             keepService.addNote(addedNote.type, addedNote.content);
+        },
+        copyNote(noteToCopy) {
+            keepService.copyNote(noteToCopy);
         }
     },
     created() {
-        console.log('note input is created');
+        eventBus.$on('copyNote', (noteToCopy) => {
+            this.copyNote(noteToCopy)
+        })
         this.cmp.type = this.selectedCmp;
-        // this.cmp.data = this.note;
-
     },
     components: {
         imgNote: imgInput,

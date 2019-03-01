@@ -2,6 +2,7 @@
 import notePreview from './keep-note-preview-cmp.js';
 import keepApp from '../../pages/keep/keep-app.js';
 import keepService from '../../services/keep-service.js'
+import { eventBus } from '../../event-bus.js';
 
 export default {
     props: ['notes'],
@@ -13,7 +14,7 @@ export default {
                     :key="note.id" 
                     v-for="note in notes"
                     class="note-preview flex">
-                    <note-preview @updateNote="updateNote" @deleteNote="removeNote" :note="note">
+                    <note-preview @copyNote="copyNote" @updateNote="updateNote" @deleteNote="removeNote" :note="note">
                     </note-preview>
                 </li>
             </ul>
@@ -25,6 +26,9 @@ export default {
         }
     },
     methods: {
+        copyNote(noteToCopy){
+            eventBus.$emit('copyNote', noteToCopy)
+        },
         removeNote(noteToRemove) {
             keepService.removeNote(noteToRemove);
             this.$emit('updateNotes');

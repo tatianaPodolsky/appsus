@@ -15,10 +15,10 @@ export default {
         <div class="preview-icons-panel flex">
             <i :class="symbType"></i>
             <div class="edit-panel">
-                <i class="fas fa-thumbtack" :style="[note.pinned ? {color:'black'} : {color:''}]"></i>
+                <i class="fas fa-thumbtack" @click.stop.self="pinNote" :style="[note.pinned ? {color:'black'} : {color:''}]"></i>
                 <i class="fas fa-palette"></i>
                 <i class="fas fa-edit"></i>
-                <i class="fas fa-copy"></i>
+                <i class="fas fa-copy" @click.stop.self="copyNote"></i>
                 <i class="fas fa-trash" @click.stop.self="deleteNote"></i>
             </div>
         </div>
@@ -28,27 +28,27 @@ export default {
         return {
             cmp: { type: null, data: null },
             symbType: null,
-            // styleObj: {
-            //     color: 'black',
-            // }
         }
     },
     methods: {
+        copyNote() {
+            this.$emit('copyNote', this.cmp.data)
+        },
+        pinNote() {
+            this.cmp.data.pinned = !this.cmp.data.pinned;
+            this.$emit('updateNote', this.cmp.data)
+        },
         deleteNote() {
-            this.$emit('deleteNote', this.note)
+            this.$emit('deleteNote', this.cmp.data)
         },
         updateNote() {
-            console.log('updatedNote at notePreview before emit to container', this.note);
-            this.$emit('updateNote', this.note)
+            this.$emit('updateNote', this.cmp.data)
         }
     },
     computed: {
 
     },
     created() {
-        console.log('note preview is created');
-
-        // debugger;
         this.cmp.type = this.note.type;
         this.cmp.data = this.note;
         if(this.note.type === 'textNote') this.symbType = "fas fa-font";
