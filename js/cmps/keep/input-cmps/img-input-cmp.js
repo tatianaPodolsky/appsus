@@ -1,6 +1,7 @@
+
 export default {
-    template: 
-    `<form @submit="saveNewNote">
+    template:
+        `<form @submit="saveNewNote">
         <input name="note" v-model="addedNote.content" @keyup.enter="saveNewNote" placeholder="Enter image URL.."></textarea>
         <button type="submit" class="btn-save-note" :disabled="!addedNote.content" value="save">Save</button>
     </form>`,
@@ -9,13 +10,13 @@ export default {
             addedNote: {
                 content: '',
                 type: 'imgNote'
+            },
         }
-    }
     },
     methods: {
         saveNewNote() {
-            if(this.addedNote.content){
-            this.$emit('saveNewNote', this.addedNote)
+            if (this.addedNote.content) {
+                this.$emit('saveNewNote', this.addedNote)
             }
             this.addedNote.content = '';
         },

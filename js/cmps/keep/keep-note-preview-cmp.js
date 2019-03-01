@@ -8,7 +8,7 @@ export default {
     template: `
     <div>
         <component
-            @updateNote="updateNote"
+            @updateNote="updateNote" @updateContent="updateContent"
             :is="cmp.type" 
             :data="cmp.data">
         </component>
@@ -17,7 +17,7 @@ export default {
             <div class="edit-panel">
                 <i class="fas fa-thumbtack" @click.stop.self="pinNote" :style="[note.pinned ? {color:'black'} : {color:''}]"></i>
                 <i class="fas fa-palette"></i>
-                <i class="fas fa-edit"></i>
+                <i class="fas fa-edit" @click="isEdit" :style="[cmp.data.isEditing ? {color:'black'} : {color:''}]"></i>
                 <i class="fas fa-copy" @click.stop.self="copyNote"></i>
                 <i class="fas fa-trash" @click.stop.self="deleteNote"></i>
             </div>
@@ -43,7 +43,26 @@ export default {
         },
         updateNote() {
             this.$emit('updateNote', this.cmp.data)
+        },
+        isEdit() {
+            switch(this.cmp.data.type) {
+                case 'textNote':
+                this.cmp.data.isEditing = (this.cmp.data.isEditing)? false:'editText';
+                break;
+                case 'todoNote':
+                this.cmp.data.isEditing = (this.cmp.data.isEditing)? false:'editTodo';
+                break;
+                case 'imgNote':
+                this.cmp.data.isEditing = (this.cmp.data.isEditing)? false:'editImg';
+                break;
+            }
+        },
+        updateContent(newContent) {
+            this.cmp.data.content = newContent;
+            this.$emit('updateNote', this.cmp.data)
+            this.cmp.data.isEditing = false;
         }
+
     },
     computed: {
 

@@ -4,8 +4,20 @@ export default {
     props: ['data'],
     template: `
         <div class="text-preview">
-            <p>{{data.content}}</p>
-            <!-- <p><i class="fas fa-font"></i></p> -->
+            <p @focusout="updateText" :contenteditable="data.isEditing">{{data.content}}</p>
         </div>
-    `
+    `,
+    data() {
+        return {
+            editStatus: this.data.isEditing,
+            newContent: null
+        }
+    },
+    methods: {
+        updateText(event) {
+            this.newContent = event.target.innerHTML;
+            this.$emit('updateContent', this.newContent);
+        }
+    },
+
 }

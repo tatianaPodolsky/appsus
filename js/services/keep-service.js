@@ -19,7 +19,8 @@ var gNotes = [
         },
         pinned: true,
         id: utilService.makeId(),
-        date: new Date()
+        date: new Date(),
+        isEditing: false
     },
     {
         type: 'imgNote',
@@ -29,7 +30,8 @@ var gNotes = [
         },
         pinned: false,
         id: utilService.makeId(),
-        date: new Date()
+        date: new Date(),
+        isEditing: false
     },
     {
         type: 'todoNote',
@@ -39,7 +41,8 @@ var gNotes = [
         },
         pinned: false,
         id: utilService.makeId(),
-        date: new Date()
+        date: new Date(),
+        isEditing: false
     }
 ];
 
@@ -61,7 +64,8 @@ function copyNote(noteToCopy) {
         style: noteToCopy.style, 
         pinned: noteToCopy.pinned, 
         id: utilService.makeId(), 
-        date: new Date()};
+        date: new Date(),
+        isEditing: false};
     gNotes.push(coppiedNote);
     storageService.store('notes', gNotes);
 }
@@ -108,7 +112,8 @@ function _createNote(type, content) {
         },
         pinned: false,
         id: utilService.makeId(),
-        date: new Date()
+        date: new Date(),
+        isEditing: false
     }
 }
 
