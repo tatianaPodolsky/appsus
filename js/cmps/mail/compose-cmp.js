@@ -5,7 +5,7 @@ export default {
   template: `
     
     <form  class=" compose-mail flex column">
-         <div v-if="sent">
+    <div v-if="sent">
       <h1>Email sent succsesfully!</h1>
     </div>
     <div v-if="!sent">
@@ -25,16 +25,16 @@ export default {
     </form>
  
     `,
+  props: ['mail'],
   data() {
     return {
-      date: new Date(),
       newMail: {
         id: utilService.makeId(),
         from: '',
-        subject: '',
+        subject: this.$route.params.subject,
         body: '',
         isRead: false,
-        time: this.date
+        time: Date.now()
       },
       sent: false
     }
@@ -52,6 +52,12 @@ export default {
   },
   computed: {
   },
+  created() {
+    console.log(this.$route.params)
+    this.$route.params.subject = this.mail
+    console.log(this.$route.params)
+  },
+
   mounted() {
     this.$refs.nameInput.focus()
   }

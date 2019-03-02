@@ -2,7 +2,7 @@ import utilService from './util-service.js'
 import storageService from './storage-service.js'
 export default {
 getMails,getMailById,gMails,addMail,removeMail}
-var date = new Date().getHours() + ':' + new Date().getMinutes()
+var date = Date.now()
 var gMails = [
   {
     id: utilService.makeId(),
@@ -67,7 +67,7 @@ function removeMail (mail) {
   storageService.store('mails', gMails)
 }
 function getMails () {
-  if (!storageService.load('mails')) storageService.store('mails', gMails)
+  if (!storageService.load('mails') || gMails === []) storageService.store('mails', gMails)
   else {
     gMails = storageService.load('mails')
   }
