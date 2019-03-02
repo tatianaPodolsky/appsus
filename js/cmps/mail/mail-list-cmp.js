@@ -1,6 +1,7 @@
 import mailPreview from './mail-preview-cmp.js'
 import mailDetails from './mail-details-cmp.js'
 import mailFilter from './mail-filter-cmp.js'
+import mailStatus from './status-cmp.js'
 import { eventBus } from '../../event-bus.js'
 
 export default {
@@ -9,23 +10,25 @@ export default {
         <section class="mail-list">
             <h1>Email list</h1>
             <mail-filter @showFiltered="filterEmails" :mails="mails"></mail-filter>
-         <router-link @click.native.prevent.stop="selectMail(mail)"  v-for="mail in mailsToFilter" :key="mail.id" :to="mail.id">
+         <router-link @click.native="selectMail(mail)"  v-for="mail in mails" :key="mail.id" :to="mail.id" >
             <mail-preview  
                 :mail="mail">
             </mail-preview>
         </router-link>
+        <mail-status :mails="mails"></mail-status>
     </section>
     
     `,
   props: ['mails'],
   components: {
     mailPreview,
+    mailStatus,
     mailFilter,
   mailDetails},
   data() {
     return {
       selectedMail: null,
-      mailsToFilter: this.mails
+      mailsToFilter: null
     }
   },
   methods: {
@@ -39,7 +42,11 @@ export default {
     }
 
   },
+  computed: {
+
+  },
   created() {
+    this.mailsToFilter = this.mails
+    // this.filterEmails(this.mails)
     console.log(this.mailsToFilter)
-  }
-}
+}}

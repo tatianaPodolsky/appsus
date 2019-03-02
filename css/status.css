@@ -1,0 +1,17 @@
+
+.status-bar span{
+    width:30px;
+    background:blue;
+    margin:5px
+}
+.status-container{
+    border:1px solid;
+    width:fit-content;
+    display:flex;
+}
+.hidden{
+    visibility: hidden;
+}
+.percent-display{
+    text-align:center
+}

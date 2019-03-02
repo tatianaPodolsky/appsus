@@ -4,13 +4,15 @@ export default {
     <section  :class="{read:mail.isRead}" @click="checked(mail)" class="mail-preview flex space-between">
   <div class="flex">
 
-      <input click.native.prevent.stop="checkAsRead" type="checkbox">
+      <input @click.prevent.stop="checkAsRead(mail)" type="checkbox">
     <p>From: {{mail.from}} </p>
   </div>
             <p>Subject: {{mail.subject}}</p>
             <!-- <p>content: {{mail.body}}</p> -->
             <p>{{mail.time}}</p>
-
+  <button style="border:none;background:none" @click.prevent.stop="reply(mail)">
+    <img width="20" src="https://img.icons8.com/metro/50/000000/reply-all-arrow.png">
+  </button>
     </section>
     
     `,
@@ -29,8 +31,17 @@ export default {
       eventBus.$emit('mailRead', mail)
       eventBus.$emit('mailUpdate', mail)
     },
-    checkedAsRead(mail) {
-      console.log('we made it', mail)
+    checkAsRead(mail) {
+      mail.isRead = !mail.isRead
+      eventBus.$emit('mailRead', mail)
+      eventBus.$emit('mailUpdate', mail)
+    },
+    reply(mail) {
+      setTimeout(function () {
+        mail.isRead =
+          eventBus.$emit('replyMail', mail)
+      }, 0)
+      this.$router.push({path: 'compose'})
     }
 
   },

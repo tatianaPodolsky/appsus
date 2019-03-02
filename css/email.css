@@ -9,7 +9,11 @@
 }
 .mail-preview{
     border:1px solid;
-    margin:1em 0
+    margin:1em 0;
+    width:50%;
+}
+.mail-preview p{
+    max-width:100px;
 }
 .mail-preview div{
     align-items: center;
