@@ -14,10 +14,10 @@ export default {
         </component>
         <div class="preview-icons-panel flex">
             <i :class="symbType"></i>
-            <div class="edit-panel">
+            <div class="edit-panel" v-if="note.focus">
                 <i class="fas fa-thumbtack" @click.stop.self="pinNote" :style="[note.pinned ? {color:'black'} : {color:''}]"></i>
                 <i class="fas fa-palette"></i>
-                <i class="fas fa-edit" @click="isEdit" :style="[cmp.data.isEditing ? {color:'black'} : {color:''}]"></i>
+                <i class="fas fa-edit" @click.stop.self="isEdit" :style="[cmp.data.isEditing ? {color:'black'} : {color:''}]"></i>
                 <i class="fas fa-copy" @click.stop.self="copyNote"></i>
                 <i class="fas fa-trash" @click.stop.self="deleteNote"></i>
             </div>
@@ -31,6 +31,7 @@ export default {
         }
     },
     methods: {
+
         copyNote() {
             this.$emit('copyNote', this.cmp.data)
         },

@@ -7,7 +7,9 @@ export default {
     addNote,
     removeNote,
     updateNote,
-    copyNote
+    copyNote,
+    updateFocus,
+    unFocusAll
 }
 
 var gNotes = [
@@ -20,7 +22,8 @@ var gNotes = [
         pinned: true,
         id: utilService.makeId(),
         date: new Date(),
-        isEditing: false
+        isEditing: false,
+        focus: false
     },
     {
         type: 'imgNote',
@@ -31,7 +34,8 @@ var gNotes = [
         pinned: false,
         id: utilService.makeId(),
         date: new Date(),
-        isEditing: false
+        isEditing: false,
+        focus: false
     },
     {
         type: 'todoNote',
@@ -42,7 +46,8 @@ var gNotes = [
         pinned: false,
         id: utilService.makeId(),
         date: new Date(),
-        isEditing: false
+        isEditing: false,
+        focus: false
     }
 ];
 
@@ -50,6 +55,20 @@ function query() {
     if (storageService.load('notes')) gNotes = storageService.load('notes');
     else storageService.store('notes', gNotes)
     return Promise.resolve(gNotes);
+}
+function updateFocus(note) {
+    gNotes.map(currNote => {
+        if (currNote.id !== note.id) {
+            if (note.focus) {
+                currNote.focus = false;
+            }
+        } else currNote.focus = note.focus;
+    }) 
+    storageService.store('notes', gNotes);
+    return Promise.resolve();
+}
+function unFocusAll() {
+    gNotes.map(note => note.focus = false)
 }
 function addNote(type, content) {
     var newNote = _createNote(type, content);
@@ -65,7 +84,8 @@ function copyNote(noteToCopy) {
         pinned: noteToCopy.pinned, 
         id: utilService.makeId(), 
         date: new Date(),
-        isEditing: false};
+        isEditing: false,
+        focus: false};
     gNotes.push(coppiedNote);
     storageService.store('notes', gNotes);
 }
@@ -113,7 +133,8 @@ function _createNote(type, content) {
         pinned: false,
         id: utilService.makeId(),
         date: new Date(),
-        isEditing: false
+        isEditing: false,
+        focus: false
     }
 }
 

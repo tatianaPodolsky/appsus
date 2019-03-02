@@ -82,7 +82,7 @@
 }
 .fas {
     color: grey;
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 .keep-new-note .fas,
 .keep-search .fas {
@@ -108,4 +108,10 @@
 .edit-panel {
     cursor: pointer;
 }
-
+li.prev-focus {
+    border: 6px solid lightgray;
+}
+.add-todo-btn {
+    height: 30px;
+    width: 30px;
+}

@@ -7,14 +7,15 @@ import { eventBus } from '../../event-bus.js';
 export default {
     props: ['notes'],
     template: `
-        <section class="keep-container" >
+        <section class="keep-container">
             <ul class="flex">
-                <li 
+                <li @click="onFocus(note)" :class="{'prev-focus': note.focus}"
                     :style="{backgroundColor: note.style.bColor}"
+                    tabindex="idx"
                     :key="note.id" 
-                    v-for="note in notes"
+                    v-for="(note, idx) in notes"
                     class="note-preview flex">
-                    <note-preview @copyNote="copyNote" @updateNote="updateNote" @deleteNote="removeNote" :note="note">
+                    <note-preview @copyNote="copyNote" @updateNote="updateNote" @deleteNote="removeNote" :note="note" :focus="focus">
                     </note-preview>
                 </li>
             </ul>
@@ -23,9 +24,18 @@ export default {
     data() {
         return {
             symbType: null,
+            focus: false
         }
     },
     methods: {
+        onFocus(note){
+            note.focus = !note.focus;
+            this.updateFocusNotes(note)
+        },
+        updateFocusNotes(note){
+            keepService.updateFocus(note);
+            this.$emit('updateNotes');
+        },
         copyNote(noteToCopy) {
             keepService.copyNote(noteToCopy);
             this.$emit('updateNotes');
@@ -37,13 +47,14 @@ export default {
         updateNote(noteToUpdate) {
             keepService.updateNote(noteToUpdate);
             this.$emit('updateNotes');
-        }
+        },
     },
     computed: {
 
     },
     created() {
     },
+
     components: {
         notePreview,
     }

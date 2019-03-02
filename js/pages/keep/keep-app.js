@@ -5,7 +5,7 @@ import keepService from '../../services/keep-service.js'
 
 export default {
     template : `
-        <section class="keep-app">
+        <section class="keep-app" @click="unFocus">
             <h1>Miss keep</h1>            
             <keep-search :notes="notes" @filterBy="filterNotes"></keep-search>  
             <keep-new-note></keep-new-note>  
@@ -40,6 +40,12 @@ export default {
                 return b.pinned - a.pinned 
                 ||a.date - b.date
               })
+        },
+        unFocus(ev) {
+            console.log(ev)
+            if(event.target.localName === 'ul' || event.target.localName === 'section' || event.target.localName === 'input' || event.target.localName ==='h1') {
+                keepService.unFocusAll();
+            }
         }
     },
     computed: {
