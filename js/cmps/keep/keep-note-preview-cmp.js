@@ -26,7 +26,7 @@ export default {
     `,
     data() {
         return {
-            cmp: { type: null, data: null },
+            cmp: { type: this.note.type, data: this.note },
             symbType: null,
         }
     },

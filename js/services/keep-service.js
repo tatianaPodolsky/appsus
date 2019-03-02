@@ -62,7 +62,10 @@ function updateFocus(note) {
             if (note.focus) {
                 currNote.focus = false;
             }
-        } else currNote.focus = note.focus;
+        } else {
+            currNote.focus = note.focus;
+            if(!note.focus) note.isEditing = false;
+        };
     }) 
     storageService.store('notes', gNotes);
     return Promise.resolve();
