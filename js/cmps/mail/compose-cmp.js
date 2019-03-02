@@ -1,7 +1,7 @@
 import mailService from '../../services/mail-service.js'
 import utilService from '../../services/util-service.js'
 import storageService from '../../services/storage-service.js'
-import { eventBus } from '../../event-bus.js';
+import { eventBus } from '../../event-bus.js'
 export default {
   template: `
     
@@ -16,30 +16,34 @@ export default {
       </div> 
       <div>
         <label>Subject:</label> <input v-model="newMail.subject" type="text">
+        <h1>{{newMail.subject}}</h1>
        </div>
        <div> 
          <label>Body:</label> <textarea rows="10" v-model="newMail.body"></textarea>
         </div>
-       <button @click="sendMail">Send</button>
+  
+       <button v-if="!isReplyMode" @click="sendMail">Send</button>
+       <button v-if="isReplyMode" @click="reply" type="button">Replay</button>
        
       </div>
     </form>
  
     `,
-  props: ['mail'],
   data() {
     return {
+      obj: null,
       newMail: {
         id: utilService.makeId(),
-        from: '',
-        subject: this.$route.params.subject,
-        body: '',
+        subject: '',
         isRead: false,
         time: Date.now()
       },
-      sent: false
+      sent: false,
+      isReplyMode: false,
+      prefix: 'RE: '
     }
   },
+
   methods: {
     sendMail() {
       mailService.addMail(this.newMail)
@@ -49,16 +53,29 @@ export default {
         history.go(-1)
         this.sent = false
       }, 1000)
+    },
+    reply() {
+      history.go(-1)
+      this.isReplyMode = true
     }
   },
-  computed: {
-  },
+
   created() {
-   eventBus.$on('')
+    eventBus.$on('replyMail', data => {
+      this.newMail = data
+
+      setTimeout(() => {
+        this.newMail.subject = this.prefix + this.newMail.subject
+        this.isReplyMode = true
+      }, 0)
+    })
   },
 
   mounted() {
     this.$refs.nameInput.focus()
+  },
+  beforeDestroy() {
+    eventBus.$off('replyMail')
   }
 
 }

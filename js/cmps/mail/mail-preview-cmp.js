@@ -10,7 +10,9 @@ export default {
             <p>Subject: {{mail.subject}}</p>
             <!-- <p>content: {{mail.body}}</p> -->
             <p>{{mail.time}}</p>
-  <button @click.prevent.stop="reply(mail)">Reply</button>
+  <button style="border:none;background:none" @click.prevent.stop="reply(mail)">
+    <img width="20" src="https://img.icons8.com/metro/50/000000/reply-all-arrow.png">
+  </button>
     </section>
     
     `,
@@ -35,8 +37,11 @@ export default {
       eventBus.$emit('mailUpdate', mail)
     },
     reply(mail) {
+      setTimeout(function () {
+        mail.isRead =
+          eventBus.$emit('replyMail', mail)
+      }, 0)
       this.$router.push({path: 'compose'})
-      eventBus.$emit('replyMail',mail)
     }
 
   },

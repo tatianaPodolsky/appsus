@@ -1,6 +1,7 @@
 import mailPreview from './mail-preview-cmp.js'
 import mailDetails from './mail-details-cmp.js'
 import mailFilter from './mail-filter-cmp.js'
+import mailStatus from './status-cmp.js'
 import { eventBus } from '../../event-bus.js'
 
 export default {
@@ -14,14 +15,16 @@ export default {
                 :mail="mail">
             </mail-preview>
         </router-link>
+        <mail-status :mails="mails"></mail-status>
     </section>
     
     `,
   props: ['mails'],
   components: {
     mailPreview,
+    mailStatus,
     mailFilter,
-    mailDetails},
+  mailDetails},
   data() {
     return {
       selectedMail: null,
