@@ -1,6 +1,7 @@
 import mailService from '../../services/mail-service.js'
 import utilService from '../../services/util-service.js'
 import storageService from '../../services/storage-service.js'
+import { eventBus } from '../../event-bus.js';
 export default {
   template: `
     
@@ -53,9 +54,7 @@ export default {
   computed: {
   },
   created() {
-    console.log(this.$route.params)
-    this.$route.params.subject = this.mail
-    console.log(this.$route.params)
+   eventBus.$on('')
   },
 
   mounted() {

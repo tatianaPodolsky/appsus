@@ -15,7 +15,8 @@ export default {
     `,
   data() {
     return {
-      mails: []
+      mails: [],
+      filteredMails: null
 
     }
   },
@@ -24,12 +25,32 @@ export default {
   mailNavbar},
   created() {
     mailService.getMails().then((res) => {
-      this.mails = res
+      if (!this.filteredMails) this.mails = res
+      else this.mails = this.filteredMails
       console.log(this.mails)
     })
     eventBus.$on('mailUpdate', ((data) => {
       storageService.store('mails', this.mails)
       console.log('data', data)
     }))
+    eventBus.$on('showFiltered', ((mails, str) => {
+      console.log('sent maikls', mails)
+      if (!mails.length && !str) { mailService.getMails().then((res) => {
+          this.mails = res
+          console.log('mails empty', this.mails)
+          return
+        })
+      }
+      console.log('ddddd', mails)
+      this.filteredMails = mails
+      this.mails = this.filteredMails
+      console.log('this mails', this.mails)
+    }))
+    eventBus.$on('clearFilter', () => {
+      mailService.getMails().then((res) => {
+        this.mails = res
+      })
+    })
   }
+
 }

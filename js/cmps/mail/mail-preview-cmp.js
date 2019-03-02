@@ -35,7 +35,8 @@ export default {
       eventBus.$emit('mailUpdate', mail)
     },
     reply(mail) {
-      this.$router.push({path: 'compose',props: mail})
+      this.$router.push({path: 'compose'})
+      eventBus.$emit('replyMail',mail)
     }
 
   },

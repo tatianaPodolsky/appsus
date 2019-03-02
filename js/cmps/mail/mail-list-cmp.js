@@ -9,7 +9,7 @@ export default {
         <section class="mail-list">
             <h1>Email list</h1>
             <mail-filter @showFiltered="filterEmails" :mails="mails"></mail-filter>
-         <router-link @click.native="selectMail(mail)"  v-for="mail in mailsToFilter" :key="mail.id" :to="mail.id">
+         <router-link @click.native="selectMail(mail)"  v-for="mail in mails" :key="mail.id" :to="mail.id" >
             <mail-preview  
                 :mail="mail">
             </mail-preview>
@@ -21,11 +21,11 @@ export default {
   components: {
     mailPreview,
     mailFilter,
-  mailDetails},
+    mailDetails},
   data() {
     return {
       selectedMail: null,
-      mailsToFilter: this.mails
+      mailsToFilter: null
     }
   },
   methods: {
@@ -39,7 +39,11 @@ export default {
     }
 
   },
+  computed: {
+
+  },
   created() {
+    this.mailsToFilter = this.mails
+    // this.filterEmails(this.mails)
     console.log(this.mailsToFilter)
-  }
-}
+}}

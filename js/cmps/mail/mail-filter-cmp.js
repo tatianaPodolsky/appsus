@@ -1,11 +1,12 @@
 import mailService from '../../services/mail-service.js'
+import { eventBus } from '../../event-bus.js'
 export default {
   template: `
     <section class="mail-filter">
         <h1>Filter</h1>
-        <button @click="filterRead">Show undead</button>
+        <button @click="filterRead">Show unread</button>
         <button @click="clear">Clear</button>
-        <input @change="searchMail" v-model="searchedMail" type="text" placeholder="Search Mail">
+        <input @keyup="searchMail" v-model="searchedMail" type="text" placeholder="Search Mail">
     </section>
     `,
   props: ['mails'],
@@ -20,19 +21,17 @@ export default {
       this.filteredEmails = this.mails.filter(mail => {
         return !mail.isRead
       })
-      this.$emit('showFiltered', this.filteredEmails)
+      eventBus.$emit('showFiltered', this.filteredEmails)
     },
     clear() {
-      this.$emit('showFiltered', this.mails)
+      eventBus.$emit('clearFilter')
     },
     searchMail() {
-      console.log(this.searchedMail)
-      this.mails.forEach(element => {
-        if (element.subject.includes(this.searchedMail)) {
-          this.filteredEmails.push(element)
-        }
+      this.filteredEmails = this.mails.filter(mail => {
+        return mail.subject.includes(this.searchedMail)
       })
-      this.$emit('showFiltered', this.filteredEmails)
+      console.log('filter====', this.filteredEmails)
+      eventBus.$emit('showFiltered', this.filteredEmails, this.searchedMail)
       this.filteredEmails = []
     }
 
