@@ -1,8 +1,19 @@
+*{
+    box-sizing:border-box
+}
 .mail-app a{
     font-size:13px;
 }
+.mail-list{
+    width:100%
+}
+.mail-preview{
+    border:1px solid;
+    margin:1em 0
+}
 .mail-preview div{
     align-items: center;
+
 }
 .mail-preview p{
     font-weight:bold
@@ -23,7 +34,19 @@
     position: absolute;
     top:0;
 }
-
+.compose-mail{
+    width:50%;
+    margin: 0 auto  
+    
+}
+.compose-mail input,textarea{
+    width:100%;
+    padding:1em;
+    resize: none
+}
+.compose-mail textarea{
+    
+}
 .mail-navbar a{
     /* border:1px solid; */
     /* width:20%; */

@@ -23,9 +23,7 @@ export default {
   methods: {
     deleteMail(mail) {
       mailService.removeMail(mail)
-      setTimeout(() => {
-        window.location.href = 'http://127.0.0.1:5500/#/mail-app/inbox'
-      }, 1500)
+      history.go(-1)
     }
   },
   created() {
