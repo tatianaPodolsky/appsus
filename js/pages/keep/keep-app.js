@@ -41,10 +41,11 @@ export default {
                 ||a.date - b.date
               })
         },
-        unFocus(ev) {
-            console.log(ev)
+        unFocus(event) {
             if(event.target.localName === 'ul' || event.target.localName === 'section' || event.target.localName === 'input' || event.target.localName ==='h1') {
-                keepService.unFocusAll();
+                console.log('unfocus All!');
+                keepService.unFocusAll()
+                .then(() => this.reCreate())
             }
         }
     },

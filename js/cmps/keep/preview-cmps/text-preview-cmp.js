@@ -9,7 +9,6 @@ export default {
     `,
     data() {
         return {
-            editStatus: this.data.isEditing,
             newContent: null
         }
     },

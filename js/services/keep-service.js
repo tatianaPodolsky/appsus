@@ -71,7 +71,11 @@ function updateFocus(note) {
     return Promise.resolve();
 }
 function unFocusAll() {
-    gNotes.map(note => note.focus = false)
+    gNotes.map(note => {
+        note.focus = false;
+        note.isEditing = false})
+    storageService.store('notes', gNotes);
+    return Promise.resolve();
 }
 function addNote(type, content) {
     var newNote = _createNote(type, content);

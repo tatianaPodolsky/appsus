@@ -115,3 +115,29 @@ li.prev-focus {
     height: 30px;
     width: 30px;
 }
+.color-picker{
+    justify-content: flex-end;
+    background-color: aliceblue;
+}
+.color-picker i {
+    font-size: 1.5em;
+}
+
+.pink i {
+    color: pink;
+}
+.yellow i {
+    color: #e6e634
+}
+.green i {
+    color: green;
+}
+.blue i {
+    color: lightblue;
+}
+.violet i {
+    color: violet;
+}
+.orange i {
+    color: orange;
+}

@@ -29,12 +29,11 @@ export default {
     },
     methods: {
         onFocus(note){
+            // if(note.isEditing) return;
             note.focus = !note.focus;
-            this.updateFocusNotes(note)
-        },
-        updateFocusNotes(note){
             keepService.updateFocus(note);
             this.$emit('updateNotes');
+            if(!note.focus) note.isEditing = false;
         },
         copyNote(noteToCopy) {
             keepService.copyNote(noteToCopy);

@@ -5,9 +5,9 @@ export default {
     props: ['data'],
     template: `
         <div class="todo-preview">
-            <button class="add-todo-btn" v-if="(data.isEditing && data.focus)" @click="onAddTodo"><i class="fas fa-plus"></i></button>
+            <button class="add-todo-btn" v-if="data.isEditing" @click="onAddTodo"><i class="fas fa-plus"></i></button>
             <input name="todos" v-if="isAddingTodo" v-model="addedTodo" @focusout="saveNewTodo" @keyup.enter="saveNewTodo" placeholder="Enter todo">
-            <li v-for="(todo, idx) in todos" :key="idx" @click.stop.prevent="updateIsDone(idx)" :class="{done: todo.done}">
+            <li v-for="(todo, idx) in todos" :key="idx" @click.stop="updateIsDone(idx)" :class="{done: todo.done}">
                 <p @focusout="updateText($event,idx)" :contenteditable="data.isEditing">{{todo.txt}}</p>
             </li>
             <!-- <p><i class="fas fa-list-ul"></i></p> -->

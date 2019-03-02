@@ -8,30 +8,46 @@ export default {
     template: `
     <div>
         <component
-            @updateNote="updateNote" @updateContent="updateContent"
-            :is="cmp.type" 
-            :data="cmp.data">
-        </component>
-        <div class="preview-icons-panel flex">
-            <i :class="symbType"></i>
-            <div class="edit-panel" v-if="note.focus">
-                <i class="fas fa-thumbtack" @click.stop.self="pinNote" :style="[note.pinned ? {color:'black'} : {color:''}]"></i>
-                <i class="fas fa-palette"></i>
+        @updateNote="updateNote" @updateContent="updateContent"
+        :is="cmp.type" 
+        :data="cmp.data">
+    </component>
+    <div class="preview-icons-panel flex">
+        <i :class="symbType"></i>
+        <i class="fas fa-thumbtack" @click.stop.self="pinNote" :style="[note.pinned ? {color:'black'} : {color:''}]"></i>
+        <div class="edit-panel" v-if="note.focus">
+                <i class="fas fa-palette" @click.stop.self="changingColor" :style="[(isChangingColor && note.focus)? {color:'black'} : {color:''}]"></i>
                 <i class="fas fa-edit" @click.stop.self="isEdit" :style="[cmp.data.isEditing ? {color:'black'} : {color:''}]"></i>
                 <i class="fas fa-copy" @click.stop.self="copyNote"></i>
                 <i class="fas fa-trash" @click.stop.self="deleteNote"></i>
             </div>
         </div>
+    
+    <div class="color-picker flex" v-if="(isChangingColor && note.focus)">
+        <div class="pink" @click.stop="changeColor('pink')"><i class="fas fa-certificate"></i></div>
+        <div class="yellow" @click.stop="changeColor('yellow')"><i class="fas fa-certificate"></i></div>
+        <div class="green" @click.stop="changeColor('lightgreen')"><i class="fas fa-certificate"></i></div>
+        <div class="blue" @click.stop="changeColor('lightblue')"><i class="fas fa-certificate"></i></div>
+        <div class="violet" @click.stop="changeColor('violet')"><i class="fas fa-certificate"></i></div>
+        <div class="orange" @click.stop="changeColor('orange')"><i class="fas fa-certificate"></i></div>
+    </div>
     </div>
     `,
     data() {
         return {
             cmp: { type: this.note.type, data: this.note },
             symbType: null,
+            isChangingColor: null
         }
     },
     methods: {
-
+        changeColor(newColor) {
+            this.note.style.bColor = newColor;
+            this.$emit('updateNote', this.cmp.data);
+        },
+        changingColor() {
+            this.isChangingColor = !this.isChangingColor;
+        },
         copyNote() {
             this.$emit('copyNote', this.cmp.data)
         },
@@ -65,16 +81,20 @@ export default {
         }
 
     },
-    computed: {
-
-    },
     created() {
         this.cmp.type = this.note.type;
         this.cmp.data = this.note;
+        if(!this.note.focus) this.isChangingColor = false;
         if(this.note.type === 'textNote') this.symbType = "fas fa-font";
         else if(this.note.type === 'imgNote') this.symbType = "fas fa-image";
         else if(this.note.type === 'todoNote') this.symbType = "fas fa-list-ul";
 
+    },
+    watch: {
+        note: function(newVal, oldVal) {
+            this.cmp.data = this.note;
+            this.isChangingColor = false;
+        },
     },
     components: {
         imgNote: imgPreview,
