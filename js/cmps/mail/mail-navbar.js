@@ -9,7 +9,6 @@ export default {
           <span v-if="unreadCount" class="unread-msg-count" >{{unreadCount}}</span> 
        </div> 
     </router-link> 
-        <router-link to="/mail-app/read">read emails</router-link>
         <router-link to="/mail-app/compose">Compose</router-link>
     </section>
     `,

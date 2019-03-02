@@ -4,33 +4,37 @@ import storageService from '../../services/storage-service.js'
 export default {
   template: `
     
-    <section class="flex column">
-        <h1>New Massage</h1>
-     <div>
-      <label>To:</label> <input v-model="newMail.from" type="text">
-     </div>  
-     <div>
-      <label>From:</label> <input v-model="newMail.to" type="text">
-    </div> 
+    <form  class=" compose-mail flex column">
+         <div v-if="sent">
+      <h1>Email sent succsesfully!</h1>
+    </div>
+    <div v-if="!sent">
     <div>
-       <label>Subject:</label> <input v-model="newMail.subject" type="text">
+      <h1>New Massage</h1>
+        <label>From:</label> <input ref="nameInput" v-model="newMail.from" type="text">
+      </div> 
+      <div>
+        <label>Subject:</label> <input v-model="newMail.subject" type="text">
        </div>
-     <div> 
-      <label>Body:</label> <textarea v-model="newMail.body"></textarea>
-       </div>
+       <div> 
+         <label>Body:</label> <textarea rows="10" v-model="newMail.body"></textarea>
+        </div>
        <button @click="sendMail">Send</button>
-    </section>
+       
+      </div>
+    </form>
+ 
     `,
   data() {
     return {
+      date: new Date(),
       newMail: {
         id: utilService.makeId(),
         from: '',
-        // tos: '',
         subject: '',
         body: '',
         isRead: false,
-        time: Date.now()
+        time: this.date
       },
       sent: false
     }
@@ -38,9 +42,18 @@ export default {
   methods: {
     sendMail() {
       mailService.addMail(this.newMail)
-      setTimeout(() => {
-        window.location.href = 'http://127.0.0.1:5500/#/mail-app/inbox'
-      }, 2500)
+      this.sent = true
+      console.log(this.sent)
+      setTimeout(function () {
+        history.go(-1)
+        this.sent = false
+      }, 1000)
     }
+  },
+  computed: {
+  },
+  mounted() {
+    this.$refs.nameInput.focus()
   }
+
 }

@@ -2,7 +2,7 @@ import utilService from './util-service.js'
 import storageService from './storage-service.js'
 export default {
 getMails,getMailById,gMails,addMail,removeMail}
-var date = Date.now()
+var date = new Date().getHours() + ':' + new Date().getMinutes()
 var gMails = [
   {
     id: utilService.makeId(),

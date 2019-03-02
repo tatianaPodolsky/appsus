@@ -9,7 +9,7 @@ export default {
         <section class="mail-list">
             <h1>Email list</h1>
             <mail-filter @showFiltered="filterEmails" :mails="mails"></mail-filter>
-         <router-link @click.native="selectMail(mail)"  v-for="mail in mailsToFilter" :key="mail.id" :to="mail.id">
+         <router-link @click.native.prevent.stop="selectMail(mail)"  v-for="mail in mailsToFilter" :key="mail.id" :to="mail.id">
             <mail-preview  
                 :mail="mail">
             </mail-preview>
