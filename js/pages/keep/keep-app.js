@@ -2,7 +2,7 @@ import keepContainer from '../../cmps/keep/keep-container-cmp.js'
 import keepSearch from '../../cmps/keep/keep-search-cmp.js';
 import keepNewNote from '../../pages/keep/keep-new-note.js'
 import keepService from '../../services/keep-service.js'
-
+import { eventBus } from '../../event-bus.js'
 export default {
     template : `
         <section class="keep-app" @click="unFocus">
@@ -25,6 +25,7 @@ export default {
             .then(()=> this.notes = this.notesToShow())
         },
         filterNotes(filterBy) {
+            console.log('filtering');
             this.filterBy = filterBy;
             if (!filterBy) this.reCreate();
             let searchStr = filterBy.toLowerCase();
@@ -60,7 +61,14 @@ export default {
     created() {
         keepService.query()
             .then(notes =>this.notes = notes)
-            .then(()=> this.notes = this.notesToShow())
+            .then(()=> this.notes = this.notesToShow());
+
+        eventBus.$on('filterBy', val => {
+            // setTimeout(() => {
+                console.log(val);
+                this.filterNotes(val)
+            // }, 0)
+          })
     }    
 }
 

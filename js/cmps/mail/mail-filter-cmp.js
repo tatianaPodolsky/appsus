@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       filteredEmails: [],
-      searchedMail: ''
+      searchedMail: '',
     }
   },
   methods: {
@@ -35,5 +35,11 @@ export default {
       this.filteredEmails = []
     }
 
+  },
+  watch: {
+    mails(n, o) {
+      console.log(this.mails);
+      
+    }
   }
 }

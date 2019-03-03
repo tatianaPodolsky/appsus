@@ -4,3 +4,15 @@ a{
 }a:hover{
     color:#ab3424;
 }
+
+.main-nav-bar {
+    background-color: lightgrey;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+
+}
+.link-nav {
+    margin: 10px;   
+}

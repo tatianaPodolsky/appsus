@@ -1,7 +1,8 @@
 import keepApp from '../../pages/keep/keep-app.js'
+import { eventBus } from '../../event-bus.js'
 
 export default {
-    props: ['notes'],
+    // props: ['notes'],
     template : `
     <section class="keep-search">
         <input v-model="inputSearch" placeholder="Search notes" @keyup="setFilter">
@@ -15,7 +16,7 @@ export default {
     },
     methods: {
         setFilter() {
-            this.$emit('filterBy', this.inputSearch)
+            eventBus.$emit('filterBy', this.inputSearch);
         }
     }
 }
