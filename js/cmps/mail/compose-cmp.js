@@ -15,7 +15,6 @@ export default {
       </div> 
       <div>
         <label>Subject:</label> <input v-model="newMail.subject" type="text">
-        <h1>{{newMail.subject}}</h1>
        </div>
        <div> 
          <label>Body:</label> <textarea rows="10" v-model="newMail.body">
@@ -60,13 +59,15 @@ export default {
       }, 1000)
     },
     reply() {
-      history.go(-1)
+    history.go(-1)
+      console.log('reply happened')
       this.isReplyMode = true
     },
     sendToKeep() {
-      this.getTimeToDisplay()
+      console.log('sending....')
+      strForNote = `Mail! Subject: ${this.newMail.subject}, Text: `
       setTimeout(() => {
-        this.$router.push({ path: '/keep-app', query: { mail: this.newMail.body  }})
+        this.$router.push({ path: '/keep-app', query: { mail: this.newMail} })
       }, 1)
     },
     getTimeToDisplay() {
@@ -91,16 +92,12 @@ export default {
         this.isReplyMode = true
       }, 0)
     })
-    var todoStr = ''
     this.mailNote = this.$route.query.note
-    console.log('mail note to compose', this.mailNote)
     this.newMail.subject = 'Your Note...'
     if (this.mailNote.type === 'todoNote') {
-      console.log(this.mailNote.content)
       var str = ''
       this.mailNote.content.forEach((element, index) => {
         str += ` ${index +1}.${element.txt}`
-        console.log('str', str)
       })
 
       console.log(this.mailNote.content)
@@ -115,7 +112,7 @@ export default {
   mounted() {
     this.$refs.nameInput.focus()
   },
-  beforeDestory() {
+  destroy() {
     eventBus.$off('replyMail')
   }
 }

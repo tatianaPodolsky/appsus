@@ -3,6 +3,8 @@ import { eventBus } from '../../event-bus.js'
 export default {
   template: `
     <section class="mail-filter">
+        <button @click="clear">Clear</button>
+        <input @keyup="searchMail" v-model="searchedMail" type="text" placeholder="Search Mail">
     </section>
     `,
   props: ['data'],
@@ -25,9 +27,9 @@ export default {
     },
     searchMail() {
       this.filteredEmails = this.data.filter(mail => {
-        return mail.subject.includes(this.searchedMail)
+
+        return mail.subject.toLowerCase().includes(this.searchedMail.toLowerCase())
       })
-      console.log('filter====', this.filteredEmails)
       eventBus.$emit('showFiltered', this.filteredEmails, this.searchedMail)
       this.filteredEmails = []
     }

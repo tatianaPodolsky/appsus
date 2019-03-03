@@ -6,7 +6,16 @@ body{
     flex-direction: column;
     
 }
-
+button{
+    border:1px solid #292929;
+    background:none;
+    padding:10px;
+    cursor: pointer;
+}
+button:hover{
+    background:#abc043c3;
+    transition:all 1s ease
+}
 .container-app {
     margin-bottom: 62px;
 }
@@ -21,7 +30,8 @@ a{
     color:black;
 
 }a:hover{
-    transform:scale(1.2)
+    transform: rotate(5deg) translate(5px,0);
+    transition:all ease .5s
 }
 .logo{
     position: absolute;

@@ -28,10 +28,14 @@
 
 }
 .mail-preview:hover{
-    animation: bounceIn .4s alternate
+    animation: bounceIn .6s alternate
 }
 .mail-navbar{
     margin-left:10px;
+    
+}
+.mail-navbar *{
+    margin: 1em 0
 }
 .mail-preview.read p{
     font-weight:400;
@@ -116,7 +120,7 @@
         transform:scale(1); opacity:0.2
     }
     60%{
-        transform:scale(1.1); opacity:0.6
+        transform:scale(1.01); opacity:0.9
     }
     100%{
         transform:scale(1); opacity:1
