@@ -9,15 +9,15 @@ export default {
       <div class="link-nav">
         <router-link to="/" exact>Home</router-link>
       </div>
-      <div class="link-nav" @click = "typeCmp = 'mailApp'" >
+      <div class="link-nav" @click ="typeCmp = 'mailApp'">
         <router-link to="/mail-app/inbox">Mail App</router-link>
       </div>
-      <div class="link-nav" @click="typeCmp = 'keepApp'" >
+      <div class="link-nav" @click="typeCmp = 'keepApp'">
         <router-link to="/keep-app">Keep App</router-link>
       </div>
       </div>
         <keep-alive>
-          <component 
+          <component v-if="mails"
               :data="mails"
               :is="typeCmp">
           </component>
@@ -40,6 +40,7 @@ export default {
     if (path.includes("mail-app")) this.typeCmp = 'mailApp';
     else if (path.includes("keep-app")) this.typeCmp = 'keepApp';
     else this.typeCmp = null;
+
     mailService.getMails()
       .then(res => {
         this.getMails(res)

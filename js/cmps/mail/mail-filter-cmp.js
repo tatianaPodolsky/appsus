@@ -9,7 +9,7 @@ export default {
         <input @keyup="searchMail" v-model="searchedMail" type="text" placeholder="Search Mail">
     </section>
     `,
-  props: ['mails'],
+  props: ['data'],
   data() {
     return {
       filteredEmails: [],
@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     filterRead() {
-      this.filteredEmails = this.mails.filter(mail => {
+      this.filteredEmails = this.data.filter(mail => {
         return !mail.isRead
       })
       eventBus.$emit('showFiltered', this.filteredEmails)
@@ -27,7 +27,7 @@ export default {
       eventBus.$emit('clearFilter')
     },
     searchMail() {
-      this.filteredEmails = this.mails.filter(mail => {
+      this.filteredEmails = this.data.filter(mail => {
         return mail.subject.includes(this.searchedMail)
       })
       console.log('filter====', this.filteredEmails)
@@ -36,10 +36,4 @@ export default {
     }
 
   },
-  watch: {
-    mails(n, o) {
-      console.log(this.mails);
-      
-    }
-  }
 }
