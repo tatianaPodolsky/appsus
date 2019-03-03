@@ -10,8 +10,11 @@ export default {
 </div>
     <p>From: {{mail.from}} </p>
   </div>
-            <p>Subject: {{mail.subject}}</p>
-            <p>{{mail.time.display}}</p>
+  <div>
+    <p>Subject: {{mail.subject}}</p>
+    <p>{{mail.time.display}}</p>
+
+  </div>
   <button style="border:none;background:none" @click.prevent.stop="reply(mail)">
     <img width="20" src="https://img.icons8.com/metro/50/000000/reply-all-arrow.png">
   </button>

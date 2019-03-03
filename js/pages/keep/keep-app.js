@@ -3,6 +3,7 @@ import keepSearch from '../../cmps/keep/keep-search-cmp.js'
 import keepNewNote from '../../pages/keep/keep-new-note.js'
 import keepService from '../../services/keep-service.js'
 import { eventBus } from '../../event-bus.js'
+
 export default {
   template: `
         <section class="keep-app" @click="unFocus">
@@ -54,8 +55,8 @@ export default {
   computed: {
   },
   components: {
-    keepSearch,
     keepContainer,
+    keepSearch,
     keepNewNote,
   // keepNoteDetails
   },
@@ -69,13 +70,11 @@ export default {
       .then(() => this.notes = this.notesToShow())
     eventBus.$on('filterBy', val => {
       this.filterNotes(val)
-    });
+    })
     if (this.$route.query.mail) {
-        this.noteMail = this.$route.query.mail;
-        keepService.addNote('textNote', this.noteMail)};
-    this.noteMail ='';
+      this.noteMail = this.$route.query.mail
+      keepService.addNote('textNote', this.noteMail)}
+    this.noteMail = ''
     this.$router.push({ path: '/keep-app'})
   }
 }
-
-

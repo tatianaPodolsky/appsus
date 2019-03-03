@@ -19,6 +19,9 @@
     justify-content: space-between
 
 }
+.mail-list{
+    margin-bottom:30px
+}
 .mail-preview div{
     align-items: center;
 
@@ -74,7 +77,8 @@
 }
 .compose-mail{
     width:50%;
-    margin: 0 auto  
+  
+    margin:20px auto  
     
 }
 .compose-mail input,textarea{
