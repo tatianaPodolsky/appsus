@@ -2,12 +2,14 @@ export default {
   template: `
     <section>
         
-            <h1>Stsatus</h1>
+            <h1>Current Stsatus</h1>
             <div class="status-container">
-                 <img  v-for="mail in 35" :key="mail.id"  :class="{hidden:mail.isRead}"  src="https://img.icons8.com/windows/32/000000/new-post.png">
-                
+                 <span style="position:absolute; display:block;text-align:center" class="percant-display">{{unreadPrecenrage}}%</span>
+                <div :style="{width:unreadPrecenrage + '%'}"\
+                 style=" transition:all 1s; background:linear-gradient(to left, rgba(98,50,150,0.5),rgba(100,60,200,0.7))"> 
+           
+               </div>
             </div>
-            <span class="percant-display">{{unreadPrecenrage}} %</span>
         </section>
     
     `,

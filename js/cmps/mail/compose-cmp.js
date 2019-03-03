@@ -36,7 +36,7 @@ export default {
         id: utilService.makeId(),
         subject: '',
         isRead: false,
-        time: Date.now()
+        time: {display: null,DB: Date.now()}
       },
       sent: false,
       isReplyMode: false,
@@ -46,6 +46,7 @@ export default {
 
   methods: {
     sendMail() {
+      this.getTimeToDisplay()
       mailService.addMail(this.newMail)
       this.sent = true
       console.log(this.sent)
@@ -57,7 +58,18 @@ export default {
     reply() {
       history.go(-1)
       this.isReplyMode = true
+    },
+    getTimeToDisplay() {
+      var date = new Date()
+      var hours = date.getHours()
+      var mins = date.getMinutes()
+      if (hours.toString().length < 2) hours = '0' + hours
+      if (mins.toString().length < 2) mins = '0' + mins
+      console.log('mins:', mins)
+      console.log(mins.toString().length, 'length')
+      this.newMail.time.display = `${hours}:${mins}`
     }
+
   },
 
   created() {
@@ -74,6 +86,7 @@ export default {
   mounted() {
     this.$refs.nameInput.focus()
   },
+
   beforeDestroy() {
     eventBus.$off('replyMail')
   }
