@@ -9,8 +9,11 @@ export default {
   </div>
             <p>Subject: {{mail.subject}}</p>
             <!-- <p>content: {{mail.body}}</p> -->
-            <p>{{mail.time}}</p>
+            <p>{{mail.time.display}}</p>
   <button style="border:none;background:none" @click.prevent.stop="reply(mail)">
+    <button>        
+        <img  title="delete" src="https://img.icons8.com/metro/26/000000/waste.png">
+</button>
     <img width="20" src="https://img.icons8.com/metro/50/000000/reply-all-arrow.png">
   </button>
     </section>

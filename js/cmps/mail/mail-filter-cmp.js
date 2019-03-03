@@ -4,7 +4,6 @@ export default {
   template: `
     <section class="mail-filter">
         <h1>Filter</h1>
-        <button @click="filterRead">Show unread</button>
         <button @click="clear">Clear</button>
         <input @keyup="searchMail" v-model="searchedMail" type="text" placeholder="Search Mail">
     </section>
@@ -17,13 +16,8 @@ export default {
     }
   },
   methods: {
-    filterRead() {
-      this.filteredEmails = this.mails.filter(mail => {
-        return !mail.isRead
-      })
-      eventBus.$emit('showFiltered', this.filteredEmails)
-    },
     clear() {
+      this.searchedMail = ''
       eventBus.$emit('clearFilter')
     },
     searchMail() {
