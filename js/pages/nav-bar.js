@@ -7,12 +7,7 @@ import Home from '../pages/home.js'
 export default {
   template: `
   <section class="main-nav-bar flex">
-<<<<<<< HEAD
-    <img src="img/logo.png" alt="">
-    <div class="links-main-nav flex" >
-=======
     <div class="links-main-nav flex space-between" >
->>>>>>> 869713732d5db0d436dddfd25826e5de7e60353f
       <div class="link-nav"  @click ="typeCmp = ''">
         <router-link to="/" exact >Home</router-link>
       </div>

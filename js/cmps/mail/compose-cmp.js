@@ -65,10 +65,15 @@ export default {
       this.isReplyMode = true
     },
     sendToKeep() {
-      this.getTimeToDisplay()
-      setTimeout(() => {
-        this.$router.push({ path: '/keep-app', query: { mail: this.newMail.body  }})
-      }, 1)
+      console.log('sending....');
+      strForNote = `Mail! Subject: ${this.newMail.subject}, Text: `
+        setTimeout(() => {
+           this.$router.push({ path: '/keep-app', query: { mail: this.newMail} })
+        }, 1)
+      // this.getTimeToDisplay()
+      // setTimeout(() => {
+      //   this.$router.push({ path: '/keep-app', query: { mail: this.newMail.body  }})
+      // }, 1)
     // eventBus.$emit('sendAsNote', this.newMail)
     },
     getTimeToDisplay() {

@@ -2,8 +2,9 @@ import mailService from '../../services/mail-service.js'
 import { eventBus } from '../../event-bus.js'
 export default {
   template: `
-    <section class="mail-filter hidden">
-
+    <section class="mail-filter">
+        <button @click="clear">Clear</button>
+        <input @keyup="searchMail" v-model="searchedMail" type="text" placeholder="Search Mail">
     </section>
     `,
   props: ['data'],
