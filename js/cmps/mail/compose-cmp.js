@@ -64,11 +64,12 @@ export default {
       this.isReplyMode = true
     },
     sendToKeep() {
-      console.log('sending....')
-      strForNote = `Mail! Subject: ${this.newMail.subject}, Text: `
+      console.log('sending....');
       setTimeout(() => {
-        this.$router.push({ path: '/keep-app', query: { mail: this.newMail} })
-      }, 1)
+        var strForNote = `Mail! Subject: ${this.newMail.subject}, Text: ${this.newMail.body}`
+           this.$router.push({ path: '/keep-app', query: { mail: strForNote} })
+        }, 1)
+        this.router.query = null;
     },
     getTimeToDisplay() {
       var date = new Date()
@@ -86,7 +87,6 @@ export default {
   created() {
     eventBus.$on('replyMail', data => {
       this.newMail = data
-
       setTimeout(() => {
         this.newMail.subject = this.prefix + this.newMail.subject
         this.isReplyMode = true
@@ -106,7 +106,8 @@ export default {
     else if (this.mailNote.type === 'imgNote') {
       this.newMail.body = 'Your image URL: ' + this.mailNote.content
     }
-    else this.newMail.body = this.mailNote.content
+    else this.newMail.body = this.mailNote.content;
+    this.mailNote ='';
   },
 
   mounted() {
