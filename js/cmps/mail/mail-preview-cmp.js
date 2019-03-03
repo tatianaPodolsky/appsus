@@ -8,18 +8,14 @@ export default {
  <img v-if="mail.isRead" src="https://img.icons8.com/metro/26/000000/checked-checkbox.png">
   <img v-if="!mail.isRead" src="https://img.icons8.com/ios/50/000000/unchecked-checkbox.png">
 </div>
-      <!-- <input @click.prevent.stop="checkAsRead(mail)" type="checkbox"> -->
     <p>From: {{mail.from}} </p>
   </div>
             <p>Subject: {{mail.subject}}</p>
-            <!-- <p>content: {{mail.body}}</p> -->
             <p>{{mail.time.display}}</p>
   <button style="border:none;background:none" @click.prevent.stop="reply(mail)">
     <img width="20" src="https://img.icons8.com/metro/50/000000/reply-all-arrow.png">
   </button>
-     <button>        
-        <img title="delete" src="https://img.icons8.com/metro/26/000000/waste.png">
-</button>
+
     </section>
     
     `,

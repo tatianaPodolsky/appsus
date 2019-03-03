@@ -2,7 +2,9 @@ export default {
   template: `
     
         <section class="home">
-          gsddd
+        <h1>
+          WELCOME TO OUR APP
+        </h1>
         </section>
     `
 }

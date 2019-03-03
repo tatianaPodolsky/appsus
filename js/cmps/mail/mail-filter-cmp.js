@@ -2,8 +2,7 @@ import mailService from '../../services/mail-service.js'
 import { eventBus } from '../../event-bus.js'
 export default {
   template: `
-    <section class="mail-filter hidden">
-
+    <section class="mail-filter">
     </section>
     `,
   props: ['data'],

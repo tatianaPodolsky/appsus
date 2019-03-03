@@ -1,6 +1,5 @@
 import mailService from '../../services/mail-service.js'
 import utilService from '../../services/util-service.js'
-import storageService from '../../services/storage-service.js'
 import { eventBus } from '../../event-bus.js'
 export default {
   template: `
@@ -69,7 +68,6 @@ export default {
       setTimeout(() => {
         this.$router.push({ path: '/keep-app', query: { mail: this.newMail.body  }})
       }, 1)
-    // eventBus.$emit('sendAsNote', this.newMail)
     },
     getTimeToDisplay() {
       var date = new Date()
