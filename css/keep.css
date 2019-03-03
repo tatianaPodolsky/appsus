@@ -1,7 +1,8 @@
 .keep-app {
     display: flex;
     align-items: center;
-    flex-direction: column
+    flex-direction: column;
+    font-size: 1.5em
 }
 .keep-container{
     display: flex;
@@ -35,8 +36,22 @@
     display: none
 }
 @media (max-width: 700px) {
+    .keep-app {
+        width: 100%;
+        font-size: 2em
+    }
+    .keep-app>*{
+        width: 100%;
+    }
     .keep-new-note .btn-save-note {
         display: flex
+    }
+    .keep-container ul {
+        flex-direction: column;
+        width: 100%
+    }
+    ul .note-preview {
+        width: 100%
     }
 }
 .keep-container h1 {
@@ -51,6 +66,7 @@
     border: 1px solid lightgrey;
     min-height: 70vh;
     flex-wrap: wrap;
+    /* flex-direction: column */
 
 }
 .keep-container ul>*  {
@@ -71,7 +87,8 @@
     text-decoration: none;
     list-style: none;
     padding: 10px;
-    min-width: 110px;
+    width: 250px;
+
 }
 .send-mail {
     text-align: right;
