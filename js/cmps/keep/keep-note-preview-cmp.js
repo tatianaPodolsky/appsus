@@ -45,8 +45,16 @@ export default {
     methods: {
         sendMail() {
             console.log('sending....');
+<<<<<<< HEAD
             eventBus.$emit('sentNote', this.cmp.data);
             this.$router.push('/mail-app');
+=======
+            // eventBus.$emit('sentNote', this.cmp.data)
+            setTimeout(() => {
+                this.$router.push({ path: '/mail-app/compose', query: { note: this.cmp.data} })
+            }, 1)
+            
+>>>>>>> 869713732d5db0d436dddfd25826e5de7e60353f
         },
         changeColor(newColor) {
             this.note.style.bColor = newColor;

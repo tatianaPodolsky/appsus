@@ -19,9 +19,11 @@ export default {
         <h1>{{newMail.subject}}</h1>
        </div>
        <div> 
-         <label>Body:</label> <textarea rows="10" v-model="newMail.body"></textarea>
+         <label>Body:</label> <textarea rows="10" v-model="newMail.body">
+           </textarea>
+         
         </div>
-  
+
        <button v-if="!isReplyMode" @click="sendMail">Send</button>
        <button v-if="isReplyMode" @click="reply" type="button">Replay</button>
        <button type="button" @click="sendToKeep">Send to keep</button>
@@ -33,11 +35,13 @@ export default {
   data() {
     return {
       obj: null,
+      mailNote: null,
       newMail: {
         id: utilService.makeId(),
         subject: '',
         isRead: false,
-        time: {display: null,DB: Date.now()}
+        time: {display: null,DB: Date.now()
+        }
       },
       sent: false,
       isReplyMode: false,
@@ -62,8 +66,10 @@ export default {
     },
     sendToKeep() {
       this.getTimeToDisplay()
-      eventBus.$emit('sendAsNote', this.newMail)
-      console.log('Send to keep', this.newMail)
+      setTimeout(() => {
+        this.$router.push({ path: '/keep-app', query: { mail: this.newMail.body  }})
+      }, 1)
+    // eventBus.$emit('sendAsNote', this.newMail)
     },
     getTimeToDisplay() {
       var date = new Date()
@@ -86,9 +92,32 @@ export default {
         this.newMail.subject = this.prefix + this.newMail.subject
         this.isReplyMode = true
       }, 0)
+<<<<<<< HEAD
     }),
     // eventBus.$on('sentNote', data => {
     //   setTimeout(console.log('sent Note (compose)', data.content), 1000)})
+=======
+    })
+    var todoStr = ''
+    this.mailNote = this.$route.query.note
+    console.log('mail note to compose', this.mailNote)
+    this.newMail.subject = 'Your Note...'
+    if (this.mailNote.type === 'todoNote') {
+      console.log(this.mailNote.content)
+      var str = ''
+      this.mailNote.content.forEach((element, index) => {
+        str += ` ${index +1}.${element.txt}`
+        console.log('str', str)
+      })
+
+      console.log(this.mailNote.content)
+      this.newMail.body = str
+    }
+    else if (this.mailNote.type === 'imgNote') {
+      this.newMail.body = 'Your image URL: ' + this.mailNote.content
+    }
+    else this.newMail.body = this.mailNote.content
+>>>>>>> 869713732d5db0d436dddfd25826e5de7e60353f
   },
 
   mounted() {

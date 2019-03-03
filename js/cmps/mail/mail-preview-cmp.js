@@ -1,24 +1,25 @@
 import { eventBus } from '../../event-bus.js'
+import mailService from '../../services/mail-service.js'
 export default {
   template: `
     <section  :class="{read:mail.isRead}" @click="checked(mail)" class="mail-preview flex space-between">
   <div class="flex checkbox-container">
 <div  @click.prevent.stop="checkAsRead(mail)">
-  <img v-if="mail.isRead" src="https://img.icons8.com/metro/26/000000/checkmark.png">
-  <img src="https://img.icons8.com/ios/50/000000/unchecked-checkbox.png">
+ <img v-if="mail.isRead" src="https://img.icons8.com/metro/26/000000/checked-checkbox.png">
+  <img v-if="!mail.isRead" src="https://img.icons8.com/ios/50/000000/unchecked-checkbox.png">
 </div>
       <!-- <input @click.prevent.stop="checkAsRead(mail)" type="checkbox"> -->
-    <p>From: <span class="sender-name-container">{{mail.from.charAt(0)}}</span>  </p>
+    <p>From: {{mail.from}} </p>
   </div>
             <p>Subject: {{mail.subject}}</p>
             <!-- <p>content: {{mail.body}}</p> -->
             <p>{{mail.time.display}}</p>
   <button style="border:none;background:none" @click.prevent.stop="reply(mail)">
-    <button>        
-        <img  title="delete" src="https://img.icons8.com/metro/26/000000/waste.png">
-</button>
     <img width="20" src="https://img.icons8.com/metro/50/000000/reply-all-arrow.png">
   </button>
+     <button>        
+        <img title="delete" src="https://img.icons8.com/metro/26/000000/waste.png">
+</button>
     </section>
     
     `,
@@ -48,9 +49,14 @@ export default {
           eventBus.$emit('replyMail', mail)
       }, 0)
       this.$router.push({path: 'compose'})
+    },
+    delete(mail) {
+      console.log('mail to delete', mail)
+      mailService.removeMail(mail)
     }
 
   },
+
   created() {
     eventBus.$emit('mailRead', this.mail)
   }

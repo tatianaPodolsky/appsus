@@ -19,14 +19,18 @@ footer{
     width:100%;
     bottom:0;
     background-color:#ccc;
+<<<<<<< HEAD
     padding: 10px;
+=======
+
+>>>>>>> 869713732d5db0d436dddfd25826e5de7e60353f
 }
 a{
     text-decoration: none;
     color:black;
 
 }a:hover{
-    color:#ab3424;
+    transform:scale(1.2)
 }
 .logo{
     position: absolute;
@@ -35,8 +39,13 @@ a{
 .main-nav-bar {
     width: 100%;
     /* height:100vh; */
+<<<<<<< HEAD
     /* background: url('../img/logo.png'); */
     background-size:100px;
+=======
+    background:url('../img/logo.jpg');
+    /* background-size:100px; */
+>>>>>>> 869713732d5db0d436dddfd25826e5de7e60353f
     background-color: #ccc;
     background-position:center 300px;
     background-repeat: no-repeat;
@@ -50,4 +59,10 @@ a{
 }
 .link-nav {
     margin: 10px;   
+}
+@keyframes bounceIn{
+    0%{transform:scale(0.2);opacity:0.2}
+    60%{transform:scale(1.1); opacity:0.6}
+    100%{transform:0}
+
 }

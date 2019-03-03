@@ -59,12 +59,11 @@ export default {
     keepNewNote,
   // keepNoteDetails
   },
-  beforeCreate(){
-console.log('before create')
+  mounted() {
+    this.noteMail = this.$route.query.mail
+    console.log(this.noteMail)
   },
   created() {
-
-
     keepService.query()
       .then(notes => this.notes = notes)
       .then(() => this.notes = this.notesToShow())
