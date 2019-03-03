@@ -60,27 +60,22 @@ export default {
   // keepNoteDetails
   },
   mounted() {
-    this.noteMail = this.$route.query.mail
-    console.log(this.noteMail)
+    // this.noteMail = this.$route.query.mail
+    // console.log(this.noteMail)
   },
   created() {
     keepService.query()
       .then(notes => this.notes = notes)
       .then(() => this.notes = this.notesToShow())
-
     eventBus.$on('filterBy', val => {
       this.filterNotes(val)
-    })
+    });
+    if (this.$route.query.mail) {
+        this.noteMail = this.$route.query.mail;
+        keepService.addNote('textNote', this.noteMail)};
+    this.noteMail ='';
+    this.$router.push({ path: '/keep-app'})
   }
 }
 
-// notesToShow() {
-//     this.searchTerm = this.filterBy.txt.toLowerCase()
-//     return this.notes.filter(note => {
-//         return (
-//                note.data.subject.toLowerCase().includes(this.searchTerm)
-//             || note.data.body.toLowerCase().includes(this.searchTerm)
-//             || note.labels.join('').toLowerCase().includes(this.searchTerm)
-//         ) &&   !note.isPinned
-//     })
-// },
+

@@ -66,15 +66,11 @@ export default {
     },
     sendToKeep() {
       console.log('sending....');
-      strForNote = `Mail! Subject: ${this.newMail.subject}, Text: `
-        setTimeout(() => {
-           this.$router.push({ path: '/keep-app', query: { mail: this.newMail} })
+      setTimeout(() => {
+        var strForNote = `Mail! Subject: ${this.newMail.subject}, Text: ${this.newMail.body}`
+           this.$router.push({ path: '/keep-app', query: { mail: strForNote} })
         }, 1)
-      // this.getTimeToDisplay()
-      // setTimeout(() => {
-      //   this.$router.push({ path: '/keep-app', query: { mail: this.newMail.body  }})
-      // }, 1)
-    // eventBus.$emit('sendAsNote', this.newMail)
+        this.router.query = null;
     },
     getTimeToDisplay() {
       var date = new Date()
@@ -92,13 +88,11 @@ export default {
   created() {
     eventBus.$on('replyMail', data => {
       this.newMail = data
-
       setTimeout(() => {
         this.newMail.subject = this.prefix + this.newMail.subject
         this.isReplyMode = true
       }, 0)
     })
-    var todoStr = ''
     this.mailNote = this.$route.query.note
     console.log('mail note to compose', this.mailNote)
     this.newMail.subject = 'Your Note...'
@@ -116,7 +110,8 @@ export default {
     else if (this.mailNote.type === 'imgNote') {
       this.newMail.body = 'Your image URL: ' + this.mailNote.content
     }
-    else this.newMail.body = this.mailNote.content
+    else this.newMail.body = this.mailNote.content;
+    this.mailNote ='';
   },
 
   mounted() {
