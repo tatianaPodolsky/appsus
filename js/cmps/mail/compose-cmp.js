@@ -86,7 +86,10 @@ export default {
         this.newMail.subject = this.prefix + this.newMail.subject
         this.isReplyMode = true
       }, 0)
-    })
+    }),
+    eventBus.$on('sentNote', data => {
+      setTimeout(console.log('sent Note (compose)', data.content), 1000)})
+      
   },
 
   mounted() {

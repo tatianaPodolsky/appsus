@@ -14,7 +14,7 @@ const routes = [
 
     ]
   },
-  {path: '/home',component: homePage},
-  { path: '/keep-app', component: keepApp }
+  {path: '/',component: homePage},
+  {path: '/keep-app', component: keepApp }
 ]
 export default routes

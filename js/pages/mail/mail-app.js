@@ -47,10 +47,11 @@ export default {
       })
     })
     eventBus.$on('sentNote', (text) => {
+      setTimeout(() => { 
         this.sentNote = text;
-        console.log('sent Note', this.sentNote);
-        alert("You've got a note!!!!")
-    })
+        console.log('sent Note (mail app)', this.sentNote)});
+      }, 1000)
+        // alert("You've got a note!!!!")
 
   }
 

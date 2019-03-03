@@ -3,9 +3,11 @@ import mailFilter from '../cmps/mail/mail-filter-cmp.js'
 import mailService from '../services/mail-service.js'
 import Home from '../pages/home.js'
 
+
 export default {
   template: `
   <section class="main-nav-bar flex">
+    <img src="img/logo.png" alt="">
     <div class="links-main-nav flex" >
       <div class="link-nav"  @click ="typeCmp = ''">
         <router-link to="/" exact >Home</router-link>
