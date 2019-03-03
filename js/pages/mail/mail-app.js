@@ -16,8 +16,8 @@ export default {
   data() {
     return {
       mails: [],
-      filteredMails: null
-
+      filteredMails: null,
+      sentNote: null
     }
   },
   components: {
@@ -46,6 +46,12 @@ export default {
         this.mails = res
       })
     })
+    eventBus.$on('sentNote', (text) => {
+        this.sentNote = text;
+        console.log('sent Note', this.sentNote);
+        alert("You've got a note!!!!")
+    })
+
   }
 
 }

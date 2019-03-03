@@ -2,24 +2,26 @@ import imgPreview from './preview-cmps/img-preview-cmp.js'
 import textPreview from './preview-cmps/text-preview-cmp.js'
 import todoPreview from './preview-cmps/todo-preview-cmp.js'
 import keepContainer from '../keep/keep-container-cmp.js'
+import {eventBus} from '../../event-bus.js'
 
 export default {
     props: ['note'],
     template: `
     <div>
+        <div class="send-mail" title="Send me by mail"><i @click.stop.self="sendMail" class="far fa-envelope"></i></div>
         <component
         @updateNote="updateNote" @updateContent="updateContent"
         :is="cmp.type" 
         :data="cmp.data">
-    </component>
+        </component>
     <div class="preview-icons-panel flex">
         <i :class="symbType"></i>
-        <i class="fas fa-thumbtack" @click.stop.self="pinNote" :style="[note.pinned ? {color:'black'} : {color:''}]"></i>
+        <i class="fas fa-thumbtack" title="Pin me too see on top!" @click.stop.self="pinNote" :style="[note.pinned ? {color:'black'} : {color:''}]"></i>
         <div class="edit-panel" v-if="note.focus">
-                <i class="fas fa-palette" @click.stop.self="changingColor" :style="[(isChangingColor && note.focus)? {color:'black'} : {color:''}]"></i>
-                <i class="fas fa-edit" @click.stop.self="isEdit" :style="[cmp.data.isEditing ? {color:'black'} : {color:''}]"></i>
-                <i class="fas fa-copy" @click.stop.self="copyNote"></i>
-                <i class="fas fa-trash" @click.stop.self="deleteNote"></i>
+                <i class="fas fa-palette" title="Change my color!" @click.stop.self="changingColor" :style="[(isChangingColor && note.focus)? {color:'black'} : {color:''}]"></i>
+                <i class="fas fa-edit" title="Edit me" @click.stop.self="isEdit" :style="[cmp.data.isEditing ? {color:'black'} : {color:''}]"></i>
+                <i class="fas fa-copy" title="Copy me, I'm awesome" @click.stop.self="copyNote"></i>
+                <i class="fas fa-trash" title="Delete me :(" @click.stop.self="deleteNote"></i>
             </div>
         </div>
     
@@ -41,6 +43,10 @@ export default {
         }
     },
     methods: {
+        sendMail() {
+            console.log('sending....');
+            eventBus.$emit('sentNote', this.cmp.data)
+        },
         changeColor(newColor) {
             this.note.style.bColor = newColor;
             this.$emit('updateNote', this.cmp.data);
