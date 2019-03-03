@@ -95,6 +95,9 @@
     flex-direction: column;
     justify-content: space-around
 }
+.todo-preview li {
+    cursor: pointer;
+}
 .todo-preview li.done {
     text-decoration: line-through;
 }

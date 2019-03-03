@@ -9,10 +9,10 @@ export default {
       <div class="link-nav">
         <router-link to="/" exact>Home</router-link>
       </div>
-      <div class="link-nav" @click ="typeCmp = 'mailApp'">
+      <div class="link-nav" @click ="typeCmp = 'mailFilter'">
         <router-link to="/mail-app/inbox">Mail App</router-link>
       </div>
-      <div class="link-nav" @click="typeCmp = 'keepApp'">
+      <div class="link-nav" @click="typeCmp = 'keepFilter'">
         <router-link to="/keep-app">Keep App</router-link>
       </div>
       </div>
@@ -37,8 +37,8 @@ export default {
   },
   created() {
     let path = this.$route.path;
-    if (path.includes("mail-app")) this.typeCmp = 'mailApp';
-    else if (path.includes("keep-app")) this.typeCmp = 'keepApp';
+    if (path.includes("mail-app")) this.typeCmp = 'mailFilter';
+    else if (path.includes("keep-app")) this.typeCmp = 'keepFilter';
     else this.typeCmp = null;
 
     mailService.getMails()
@@ -48,8 +48,8 @@ export default {
       })
   },
   components: {
-    mailApp: mailFilter,
-    keepApp: keepSearch,
+    mailFilter: mailFilter,
+    keepFilter: keepSearch,
   }
 }
 

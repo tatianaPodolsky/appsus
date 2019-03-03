@@ -47,10 +47,4 @@ export default {
             this.addedTodo = '';
         }
     },
-    computed: {
-
-    },
-    created() {
-        // this.todos = data.content;
-    },
 }
