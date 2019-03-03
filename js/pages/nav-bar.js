@@ -6,7 +6,7 @@ import Home from '../pages/home.js'
 export default {
   template: `
   <section class="main-nav-bar flex">
-    <div class="links-main-nav flex" >
+    <div class="links-main-nav flex space-between" >
       <div class="link-nav"  @click ="typeCmp = ''">
         <router-link to="/" exact >Home</router-link>
       </div>

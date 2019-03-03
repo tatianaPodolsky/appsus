@@ -1,22 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Mali');
 
+/* #app{ */
+    /* background:#30ccdd} */
 *{
     box-sizing:border-box;
     font-family:'Mali',sans-serif
 }
+
 .mail-app a{
     font-size:13px;
+    cursor: pointer
 }
 .mail-list{
-    width:100%
+    width:70%
 }
 .mail-preview{
     border:1px solid;
-    margin:1em 0;
-    width:50%;
-}
-.mail-preview p{
-    max-width:100px;
+    justify-content: space-between
+
 }
 .mail-preview div{
     align-items: center;
@@ -26,6 +27,12 @@
     font-weight:bold
 
 }
+.mail-preview:hover{
+    animation: bounceIn .4s alternate
+}
+.mail-navbar{
+    margin-left:10px;
+}
 .mail-preview.read p{
     font-weight:400;
     
@@ -33,32 +40,33 @@
 .unread-msg-container{
     position: relative;
 }
+.mail-preview button{
+    background:none;
+    border:none;
+}
 .sender-name-container{
     border:1px solid;
-    padding:1em;
+    padding:0.6em 1em;
     box-shadow:1px 2px 3px,-1px -2px 3px;
-    border-radius:50%;
+    border-radius:20px;
 }
 .unread-msg-count{
-    background:red;
-    color:White;
-    /* padding:0.1em .3em; */
+    background:rgba(239,49,100,0.7);
+    color:black;
+    padding:0.1em .5em;
     border-radius: 50%;
     position: absolute;
-    top:0;
+    top:-10px;
+    left:45px
 }
-.checkbox-container img:nth-child(2){
-    position: absolute;
-    transition:all 1s
-}
+
 .checkbox-container img{
     width:24px;
     
 }
 .checkbox-container{
     position: relative;
-    margin:1em
-    /* width:20em; */
+    padding:1em;
 }
 .compose-mail{
     width:50%;
@@ -70,15 +78,22 @@
     padding:1em;
     resize: none
 }
-.compose-mail textarea{
     
+.mail-filter{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    height: 2em;
 }
+
+.mail-filter input{
+    width: 100%;
+}
+
 .mail-navbar a{
-    /* border:1px solid; */
-    /* width:20%; */
+
     font-size:1.2em;
-    /* position: relatsive; */
-    /* padding:1em; */
+   
 }
 .single-mail{
     border:1px solid;
@@ -95,4 +110,15 @@
 .single-mail .delete-btn:hover{
     opacity:0.5;
     transition:all 1s;
+}
+@keyframes bounceIn{
+    0%{
+        transform:scale(1); opacity:0.2
+    }
+    60%{
+        transform:scale(1.1); opacity:0.6
+    }
+    100%{
+        transform:scale(1); opacity:1
+    }
 }

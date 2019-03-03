@@ -6,17 +6,18 @@ body{
     
 }
 footer{
-    position:fixed;
+    /* position:fixed; */
     width:100%;
     bottom:0;
-    background-color:#ccc
+    background-color:#ccc;
+
 }
 a{
     text-decoration: none;
     color:black;
 
 }a:hover{
-    color:#ab3424;
+    transform:scale(1.2)
 }
 .logo{
     position: absolute;
@@ -25,7 +26,7 @@ a{
 .main-nav-bar {
     /* height:100vh; */
     background:url('../img/logo.jpg');
-    background-size:100px;
+    /* background-size:100px; */
     background-color: #ccc;
     background-position:center 300px;
     background-repeat: no-repeat;
@@ -38,4 +39,10 @@ a{
 
 .link-nav {
     margin: 10px;   
+}
+@keyframes bounceIn{
+    0%{transform:scale(0.2);opacity:0.2}
+    60%{transform:scale(1.1); opacity:0.6}
+    100%{transform:0}
+
 }
