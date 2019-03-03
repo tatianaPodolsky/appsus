@@ -8,8 +8,7 @@ export default {
   template: `
 
         <section class="mail-list">
-            <h1>Email list</h1>
-            <mail-filter @showFiltered="filterEmails" :mails="mails"></mail-filter>
+              <mail-filter @showFiltered="filterEmails" :mails="mails"></mail-filter>
          <router-link @click.native="selectMail(mail)"  v-for="mail in mails" :key="mail.id" :to="mail.id" >
             <mail-preview  
                 :mail="mail">

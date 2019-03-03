@@ -1,18 +1,41 @@
+body{
+    margin:0;
+    background-size:contain;
+    height:100vh
+    
+    
+}
+footer{
+    position:fixed;
+    width:100%;
+    bottom:0;
+    background-color:#ccc
+}
 a{
     text-decoration: none;
     color:black;
+
 }a:hover{
     color:#ab3424;
 }
-
+.logo{
+    position: absolute;
+    top:0
+}
 .main-nav-bar {
-    background-color: lightgrey;
-    height: 10vh;
+    height:100vh;
+    background:url('../img/logo.jpg');
+    background-size:100px;
+    background-color: #ccc;
+    background-position:center 300px;
+    background-repeat: no-repeat;
     align-items: center;
+    font-size:1.4em;
     justify-content: space-around;
-    padding: 10px;
+    padding: 5em;
 
 }
+
 .link-nav {
     margin: 10px;   
 }

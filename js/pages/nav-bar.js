@@ -1,13 +1,14 @@
-import keepSearch from '../cmps/keep/keep-search-cmp.js';
-import mailFilter from '../cmps/mail/mail-filter-cmp.js';
+import keepSearch from '../cmps/keep/keep-search-cmp.js'
+import mailFilter from '../cmps/mail/mail-filter-cmp.js'
 import mailService from '../services/mail-service.js'
+import Home from '../pages/home.js'
 
 export default {
   template: `
   <section class="main-nav-bar flex">
     <div class="links-main-nav flex" >
       <div class="link-nav">
-        <router-link to="/" exact>Home</router-link>
+        <router-link to="/home" exact>Home</router-link>
       </div>
       <div class="link-nav" @click ="typeCmp = 'mailFilter'">
         <router-link to="/mail-app/inbox">Mail App</router-link>
@@ -31,25 +32,24 @@ export default {
     }
   },
   methods: {
-      getMails(mails) {
-        this.mails = mails;
-      }
+    getMails(mails) {
+      this.mails = mails
+    }
   },
   created() {
-    let path = this.$route.path;
-    if (path.includes("mail-app")) this.typeCmp = 'mailFilter';
-    else if (path.includes("keep-app")) this.typeCmp = 'keepFilter';
-    else this.typeCmp = null;
+    let path = this.$route.path
+    if (path.includes('mail-app')) this.typeCmp = 'mailFilter'
+    else if (path.includes('keep-app')) this.typeCmp = 'keepFilter'
+    else this.typeCmp = null
 
     mailService.getMails()
       .then(res => {
         this.getMails(res)
-        console.log(this.mails);
+        console.log(this.mails)
       })
   },
   components: {
     mailFilter: mailFilter,
-    keepFilter: keepSearch,
+    keepFilter: keepSearch
   }
 }
-

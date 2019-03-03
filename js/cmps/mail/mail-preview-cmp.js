@@ -8,7 +8,7 @@ export default {
   <img src="https://img.icons8.com/ios/50/000000/unchecked-checkbox.png">
 </div>
       <!-- <input @click.prevent.stop="checkAsRead(mail)" type="checkbox"> -->
-    <p>From: {{mail.from}} </p>
+    <p>From: <span class="sender-name-container">{{mail.from.charAt(0)}}</span>  </p>
   </div>
             <p>Subject: {{mail.subject}}</p>
             <!-- <p>content: {{mail.body}}</p> -->
