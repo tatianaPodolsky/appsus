@@ -87,9 +87,8 @@ export default {
         this.isReplyMode = true
       }, 0)
     }),
-    eventBus.$on('sentNote', data => {
-      setTimeout(console.log('sent Note (compose)', data.content), 1000)})
-      
+    // eventBus.$on('sentNote', data => {
+    //   setTimeout(console.log('sent Note (compose)', data.content), 1000)})
   },
 
   mounted() {

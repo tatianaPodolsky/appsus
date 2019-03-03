@@ -46,12 +46,12 @@ export default {
         this.mails = res
       })
     })
-    eventBus.$on('sentNote', (text) => {
-      setTimeout(() => { 
-        this.sentNote = text;
-        console.log('sent Note (mail app)', this.sentNote)});
-      }, 1000)
-        // alert("You've got a note!!!!")
+    // eventBus.$on('sentNote', (text) => {
+    //   setTimeout(() => { 
+    //     this.sentNote = text;
+    //     console.log('sent Note (mail app)', this.sentNote)});
+    //   }, 1000)
+    //     // alert("You've got a note!!!!")
 
   }
 

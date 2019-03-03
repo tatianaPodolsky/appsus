@@ -16,6 +16,7 @@ window.vueApp = new Vue({
     components: {
         // mailApp,
         // keepApp,
+        
         navBar
     }
 })

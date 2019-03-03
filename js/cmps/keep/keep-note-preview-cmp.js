@@ -46,7 +46,7 @@ export default {
         sendMail() {
             console.log('sending....');
             eventBus.$emit('sentNote', this.cmp.data);
-            this.$router.push('/mail-app')
+            this.$router.push('/mail-app');
         },
         changeColor(newColor) {
             this.note.style.bColor = newColor;
