@@ -8,7 +8,7 @@ export default {
     props: ['notes'],
     template: `
         <section class="keep-container">
-            <ul class="flex">
+            <ul>
                 <li @click="onFocus(note)" :class="{'prev-focus': note.focus}"
                     :style="{backgroundColor: note.style.bColor}"
                     tabindex="idx"
