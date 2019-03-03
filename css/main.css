@@ -23,7 +23,7 @@ a{
     top:0
 }
 .main-nav-bar {
-    height:100vh;
+    /* height:100vh; */
     background:url('../img/logo.jpg');
     background-size:100px;
     background-color: #ccc;
@@ -32,7 +32,7 @@ a{
     align-items: center;
     font-size:1.4em;
     justify-content: space-around;
-    padding: 5em;
+    padding: 2em;
 
 }
 
