@@ -59,6 +59,7 @@ export default {
         // keepNoteDetails
     },
     created() {
+        // console.log(this.$route.query)
         keepService.query()
             .then(notes =>this.notes = notes)
             .then(()=> this.notes = this.notesToShow());

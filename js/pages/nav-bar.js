@@ -6,8 +6,8 @@ export default {
   template: `
   <section class="main-nav-bar flex">
     <div class="links-main-nav flex" >
-      <div class="link-nav">
-        <router-link to="/" exact>Home</router-link>
+      <div class="link-nav"  @click ="typeCmp = ''">
+        <router-link to="/" exact >Home</router-link>
       </div>
       <div class="link-nav" @click ="typeCmp = 'mailFilter'">
         <router-link to="/mail-app/inbox">Mail App</router-link>
@@ -17,7 +17,7 @@ export default {
       </div>
       </div>
         <keep-alive>
-          <component v-if="mails"
+          <component v-if="typeCmp"
               :data="mails"
               :is="typeCmp">
           </component>
