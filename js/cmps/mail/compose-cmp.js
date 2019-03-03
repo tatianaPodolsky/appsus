@@ -24,6 +24,7 @@ export default {
   
        <button v-if="!isReplyMode" @click="sendMail">Send</button>
        <button v-if="isReplyMode" @click="reply" type="button">Replay</button>
+       <button type="button" @click="sendToKeep">Send to keep</button>
        
       </div>
     </form>
@@ -59,6 +60,11 @@ export default {
       history.go(-1)
       this.isReplyMode = true
     },
+    sendToKeep() {
+      this.getTimeToDisplay()
+      eventBus.$emit('sendAsNote', this.newMail)
+      console.log('Send to keep', this.newMail)
+    },
     getTimeToDisplay() {
       var date = new Date()
       var hours = date.getHours()
@@ -86,9 +92,7 @@ export default {
   mounted() {
     this.$refs.nameInput.focus()
   },
-
-  beforeDestroy() {
+  beforeDestory() {
     eventBus.$off('replyMail')
   }
-
 }

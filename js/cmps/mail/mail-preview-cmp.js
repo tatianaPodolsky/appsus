@@ -2,9 +2,12 @@ import { eventBus } from '../../event-bus.js'
 export default {
   template: `
     <section  :class="{read:mail.isRead}" @click="checked(mail)" class="mail-preview flex space-between">
-  <div class="flex">
-
-      <input @click.prevent.stop="checkAsRead(mail)" type="checkbox">
+  <div class="flex checkbox-container">
+<div  @click.prevent.stop="checkAsRead(mail)">
+  <img v-if="mail.isRead" src="https://img.icons8.com/metro/26/000000/checkmark.png">
+  <img src="https://img.icons8.com/ios/50/000000/unchecked-checkbox.png">
+</div>
+      <!-- <input @click.prevent.stop="checkAsRead(mail)" type="checkbox"> -->
     <p>From: {{mail.from}} </p>
   </div>
             <p>Subject: {{mail.subject}}</p>
