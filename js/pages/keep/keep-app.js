@@ -64,10 +64,7 @@ export default {
             .then(()=> this.notes = this.notesToShow());
 
         eventBus.$on('filterBy', val => {
-            // setTimeout(() => {
-                console.log(val);
                 this.filterNotes(val)
-            // }, 0)
           })
     }    
 }
